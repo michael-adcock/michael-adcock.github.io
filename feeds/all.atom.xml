@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Adcock</title><link href="https://michael-adcock.github.io/" rel="alternate"></link><link href="https://michael-adcock.github.io/feeds/all.atom.xml" rel="self"></link><id>https://michael-adcock.github.io/</id><updated>2016-06-08T20:00:00+01:00</updated><entry><title>Switchpoints in Crowding</title><link href="https://michael-adcock.github.io/switchpoints-in-crowding.html" rel="alternate"></link><published>2016-06-08T20:00:00+01:00</published><updated>2016-06-08T20:00:00+01:00</updated><author><name>Michael Adcock</name></author><id>tag:michael-adcock.github.io,2016-06-08:switchpoints-in-crowding.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Michael Adcock</title><link href="https://michael-adcock.github.io/" rel="alternate"></link><link href="https://michael-adcock.github.io/feeds/all.atom.xml" rel="self"></link><id>https://michael-adcock.github.io/</id><updated>2018-05-26T21:00:00+01:00</updated><entry><title>Switchpoints in Crowding</title><link href="https://michael-adcock.github.io/switchpoints-in-crowding.html" rel="alternate"></link><published>2018-05-26T21:00:00+01:00</published><updated>2018-05-26T21:00:00+01:00</updated><author><name>Michael Adcock</name></author><id>tag:michael-adcock.github.io,2018-05-26:switchpoints-in-crowding.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -1717,4 +1717,649 @@ h6:hover .anchor-link {
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</summary><category term="pymc"></category><category term="Bayesian"></category><category term="probabilistic programming"></category><category term="agent based modeling"></category><category term="abm"></category></entry></feed>
+</summary><category term="pymc"></category><category term="Bayesian"></category><category term="probabilistic programming"></category><category term="agent based modeling"></category><category term="abm"></category></entry><entry><title>An Area Classification of Consumer Vulnerability in the UK</title><link href="https://michael-adcock.github.io/consumer_vulnerability.html" rel="alternate"></link><published>2018-05-26T20:00:00+01:00</published><updated>2018-05-26T20:00:00+01:00</updated><author><name>Michael Adcock</name></author><id>tag:michael-adcock.github.io,2018-05-26:consumer_vulnerability.html</id><summary type="html">&lt;hr /&gt;
+&lt;p&gt;title: "Consumer Vulnerability in the United Kingdom"
+output: html_notebook&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h5&gt;Michael Adcock&lt;/h5&gt;
+&lt;p&gt;\newline&lt;/p&gt;
+&lt;h3&gt;Abstract&lt;/h3&gt;
+&lt;p&gt;Consumer vulnerability has recently attracted increased media attention
+due to a number of high profle cases. While consumer vulnerability has been
+discussed at length for over a decade and guidelines have been produced, there
+has not been a comprehensive geographical assessment of consumer vulnerabil-
+ity in the United Kingdom. This work creates a geodemographic classifcation
+of consumer vulnerability at the geography of output area. This classifcation
+was achieved using a k-means approach. There were found to be six distinct
+clusters of varying levels of vulnerability. Two clusters in particular can be
+considered to contain high levels of vulnerable people, identifed as Vulner-
+able Communities and Vulnerable Pensioners. To aid interpretability of the
+results, pen portraits are provided for each cluster along with an interactive
+map showing cluster assignment for every output area in the United Kingdom.
+To further explore the characteristics of the clusters, sub-cluster were created
+by using the same k-means methods on each individual cluster dataset. Com-
+parison of these clusters and sub-clusters created with open source data to
+closed sourced data obtained from a commercial partner also helped to fur-
+ther explore the character of clusters. Comparison with a previous successful
+geodemographic classification shows improvement in cluster tightness.&lt;/p&gt;
+&lt;h3&gt;A Definition of Consumer Vulnerability&lt;/h3&gt;
+&lt;p&gt;There is general agreement in the current literature that consumer vulnerably is highly complex and may be influenced by many factors. As such a definition used for categorising vulnerability should reflect this while still providing a useful measure. A suitable way of defining vulnerability would therefore be using a multidimensional approach.&lt;/p&gt;
+&lt;p&gt;To take these factors into account and produce a definition of consumer vulnerability that can be measured for this study, the following definition is proposed:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Consumer vulnerability is the risk that a consumer's mental, physical or financial welfare may be damaged when engaging in a market interaction.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This definition can be measured using five dimensions (based on the EC report):&lt;/p&gt;
+&lt;p&gt;1.Risk of harm occurring to the consumer as a result of a negative transaction outcome.&lt;/p&gt;
+&lt;p&gt;2.The ability of the consumer to maximise their own well-being.&lt;/p&gt;
+&lt;p&gt;3.The ability of the consumer to access suitable information about products or services.&lt;/p&gt;
+&lt;p&gt;4.The ability of the consumer to access suitable products and services.&lt;/p&gt;
+&lt;p&gt;5.Susceptibility of the consumer to market practices.&lt;/p&gt;
+&lt;p&gt;When making use of these dimensions to measure vulnerability the following factors should be considered: individual characteristics (e.g. age, income), transient states of the consumer (e.g. illness), external conditions (e.g. prejudice) on the consumer, and market forces acting on the consumer.&lt;/p&gt;
+&lt;p&gt;These five dimensions can be used to construct a scale of vulnerability (e.g. 1 to 5) as related to the above definition. This scale does not give an absolute measure of vulnerability of the consumer in every interaction but rather the risk that the consumer may be vulnerable in a given interaction.&lt;/p&gt;
+&lt;p&gt;This definition and the five dimensions of vulnerability can be considered from the perspective of different markets (e.g. energy sector, financial sector and the gambling industry) which will change the vulnerability scores of customers in respect to these markets.&lt;/p&gt;
+&lt;h2&gt;Methods&lt;/h2&gt;
+&lt;p&gt;Libraries and functions requied for analysis&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;plyr&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;RColorBrewer&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;tidyverse&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;rgdal&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;parallel&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;plotrix&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in library(plotrix): there is no package called &amp;#39;plotrix&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ggplot2&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;reshape2&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sf&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Subset OA data and calculate percentages using demominators &lt;/span&gt;
+count_to_percentage &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;input_df&lt;span class="p"&gt;,&lt;/span&gt; variable_choices&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  tibble&lt;span class="o"&gt;::&lt;/span&gt;as.tibble&lt;span class="p"&gt;(&lt;/span&gt;input_df&lt;span class="p"&gt;[&lt;/span&gt;variable_choices&lt;span class="o"&gt;$&lt;/span&gt;VariableCode&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; 
+                      input_df&lt;span class="p"&gt;[&lt;/span&gt;variable_choices&lt;span class="o"&gt;$&lt;/span&gt;StatisticalUnit&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="m"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+ihs &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;input_df&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  as.tibble&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;input_df &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="kp"&gt;sqrt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;input_df &lt;span class="o"&gt;^&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+z_scores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;input_df&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;# Compute the column-wise means for all observations&lt;/span&gt;
+  mean_by_col &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;input_df&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="c1"&gt;# Compute the column-wise sample sd&amp;#39;s for *all* observations&lt;/span&gt;
+  sd_by_col &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;input_df&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; sd&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="c1"&gt;# Create the z-scores via the &amp;#39;scale&amp;#39; function&lt;/span&gt;
+  zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;&lt;span class="kp"&gt;scale&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;input_df&lt;span class="p"&gt;,&lt;/span&gt; center &lt;span class="o"&gt;=&lt;/span&gt; mean_by_col&lt;span class="p"&gt;,&lt;/span&gt; scale &lt;span class="o"&gt;=&lt;/span&gt; sd_by_col&lt;span class="p"&gt;)&lt;/span&gt;
+  as.tibble&lt;span class="p"&gt;(&lt;/span&gt;zscores&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Corrolation&lt;/span&gt;
+cor_cutoff &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;variable&lt;span class="p"&gt;,&lt;/span&gt; cutoff&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  cor_mat&lt;span class="p"&gt;[,&lt;/span&gt;variable&lt;span class="p"&gt;][&lt;/span&gt;cor_mat&lt;span class="p"&gt;[,&lt;/span&gt;variable&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; cutoff &lt;span class="o"&gt;|&lt;/span&gt; cor_mat&lt;span class="p"&gt;[,&lt;/span&gt;variable&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;cutoff&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Wrapper for kmeans&lt;/span&gt;
+k_means &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt; input_data&lt;span class="p"&gt;,&lt;/span&gt; n_start_input&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kp"&gt;set.seed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2494&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  kmeans&lt;span class="p"&gt;(&lt;/span&gt;input_data&lt;span class="p"&gt;,&lt;/span&gt; 
+         k&lt;span class="p"&gt;,&lt;/span&gt; iter.max &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+         nstart &lt;span class="o"&gt;=&lt;/span&gt; n_start_input&lt;span class="p"&gt;,&lt;/span&gt; 
+         algorithm &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Lloyd&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)}&lt;/span&gt;
+
+k_comparison &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;input_data&lt;span class="p"&gt;,&lt;/span&gt; iter&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; n_start&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;# Set up parrallel processing for windows&lt;/span&gt;
+  cl &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; makeCluster&lt;span class="p"&gt;(&lt;/span&gt;detectCores&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  clusterExport&lt;span class="p"&gt;(&lt;/span&gt;cl&lt;span class="o"&gt;=&lt;/span&gt;cl&lt;span class="p"&gt;,&lt;/span&gt;
+                varlist&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;iter&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;k_means&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;input_data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;n_start&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                envir&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+  &lt;span class="kp"&gt;system.time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    k_choice_clust_list &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; parLapply&lt;span class="p"&gt;(&lt;/span&gt;cl&lt;span class="p"&gt;,&lt;/span&gt; iter&lt;span class="p"&gt;,&lt;/span&gt; k_means&lt;span class="p"&gt;,&lt;/span&gt; input_data&lt;span class="p"&gt;,&lt;/span&gt; n_start&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;)&lt;/span&gt;
+  stopCluster&lt;span class="p"&gt;(&lt;/span&gt;cl&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Scree plot&lt;/span&gt;
+scree &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&gt;,&lt;/span&gt; iter&lt;span class="p"&gt;,&lt;/span&gt; title&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  wss &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;tot.withinss&lt;span class="p"&gt;)&lt;/span&gt;
+  plot&lt;span class="p"&gt;(&lt;/span&gt;iter&lt;span class="p"&gt;,&lt;/span&gt; wss&lt;span class="p"&gt;,&lt;/span&gt; 
+       type &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;o&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+       main &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Cluster Scree Plot: &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; title&lt;span class="p"&gt;),&lt;/span&gt;
+       xlab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Number of Clusters&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+       ylab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Within Cluster Sum of Squares&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  min_clus &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt;purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="kp"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;size&lt;span class="p"&gt;))&lt;/span&gt;
+  plot&lt;span class="p"&gt;(&lt;/span&gt;iter&lt;span class="p"&gt;,&lt;/span&gt; min_clus&lt;span class="p"&gt;,&lt;/span&gt; 
+       type &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;h&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+       main &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Smallest Cluster Plot:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; title&lt;span class="p"&gt;),&lt;/span&gt;
+       xlab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Number of Clusters&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+       ylab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Smallest Cluster Size&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+run_kmeans_comp_subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; data&lt;span class="p"&gt;,&lt;/span&gt; num_pc&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  data &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+    filter&lt;span class="p"&gt;(&lt;/span&gt;cluster&lt;span class="o"&gt;==&lt;/span&gt;subgroup&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
+    select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
+    k_comparison&lt;span class="p"&gt;(&lt;/span&gt;iter&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
+    scree&lt;span class="p"&gt;(&lt;/span&gt;iter&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;subgroup &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; subgroup&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+run_kmeans_subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; k&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; subgroup&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;ncol&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  k_means&lt;span class="p"&gt;(&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt; subgroup&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+avg_z &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_choice&lt;span class="p"&gt;,&lt;/span&gt; sub_kmeans_obj&lt;span class="p"&gt;,&lt;/span&gt; k_means_obj&lt;span class="p"&gt;,&lt;/span&gt; cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  a &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; as_tibble&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;cbind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;,&lt;/span&gt; cluster&lt;span class="o"&gt;=&lt;/span&gt;k_means_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;))&lt;/span&gt;
+  a &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; filter&lt;span class="p"&gt;(&lt;/span&gt;a&lt;span class="p"&gt;,&lt;/span&gt; cluster&lt;span class="o"&gt;==&lt;/span&gt;cluster_choice&lt;span class="p"&gt;)[,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;a&lt;span class="p"&gt;)]&lt;/span&gt;
+  ddply&lt;span class="p"&gt;(&lt;/span&gt;a&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_kmeans_obj&lt;span class="p"&gt;[[&lt;/span&gt;cluster_choice&lt;span class="p"&gt;]]&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;),&lt;/span&gt; numcolwise&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;))[,&lt;/span&gt; &lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+cluster_difference &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;,&lt;/span&gt; cluster_zscores&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;unlist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class="p"&gt;)&lt;/span&gt;
+  sub_cluster_zscores &lt;span class="o"&gt;-&lt;/span&gt; cluster_zscores&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kp"&gt;col&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;)]&lt;/span&gt; &lt;span class="c1"&gt;# -&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+rename_rows &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;,&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kp"&gt;row.names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;nrow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;row&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;name&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;: Subgroup &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;row&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; sep&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+create_heatmap &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mean_cluster_zscores&lt;span class="p"&gt;,&lt;/span&gt; num_clusters&lt;span class="p"&gt;,&lt;/span&gt; margins&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="c1"&gt;# Create heatmap&lt;/span&gt;
+  colours &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;rev&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;brewer.pal&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;BrBG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;# reverse colours&lt;/span&gt;
+  break_nums &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;-1e10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;-2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;-1.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;-0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;+1e10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+  legend_names &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;-2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;-2 to -1.5&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;-1.5 to -1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;-1 to -0.5&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;-0.5 to 0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;0 to 0.5&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1 to 2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1.5 to 2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2 to 2.5&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;gt;2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  heatmap&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mean_cluster_zscores&lt;span class="p"&gt;),&lt;/span&gt;
+          scale &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;none&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          col &lt;span class="o"&gt;=&lt;/span&gt; colours&lt;span class="p"&gt;,&lt;/span&gt;
+
+          breaks &lt;span class="o"&gt;=&lt;/span&gt; break_nums&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;#3&lt;/span&gt;
+          cexRow &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          cexCol &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;.8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+          mar&lt;span class="o"&gt;=&lt;/span&gt;margins&lt;span class="p"&gt;,&lt;/span&gt;
+          add.expr&lt;span class="o"&gt;=&lt;/span&gt; abline&lt;span class="p"&gt;(&lt;/span&gt;h &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mean_cluster_zscores&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; v &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; col &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;white&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  par&lt;span class="p"&gt;(&lt;/span&gt;xpd&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+  legend&lt;span class="p"&gt;(&lt;/span&gt;title&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;expression&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;bold&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;z-score\n\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="m"&gt;0.22&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;-0.07&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; legend_names&lt;span class="p"&gt;,&lt;/span&gt; title.adj&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0.48&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; lty &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; lwd &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; col&lt;span class="o"&gt;=&lt;/span&gt;colours&lt;span class="p"&gt;,&lt;/span&gt; cex&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; bty &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; horiz&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; adj&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;-2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; x.intersp&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  par&lt;span class="p"&gt;(&lt;/span&gt;xpd&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+ &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# produce radial plots&lt;/span&gt;
+radial_plot &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;data&lt;span class="p"&gt;,&lt;/span&gt; main_title&lt;span class="p"&gt;,&lt;/span&gt; min_max&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;-2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; legend_names&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kp"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;main_title&lt;span class="p"&gt;)&lt;/span&gt;
+  par&lt;span class="p"&gt;(&lt;/span&gt;cex.axis&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;.7&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  par&lt;span class="p"&gt;(&lt;/span&gt;cex.lab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;.6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  colours &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; brewer.pal&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Set1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  p &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; radial.plot&lt;span class="p"&gt;(&lt;/span&gt;data&lt;span class="p"&gt;,&lt;/span&gt; labels&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;data&lt;span class="p"&gt;),&lt;/span&gt;
+              start&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+              clockwise&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+              rp.type&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;p&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+              line.col&lt;span class="o"&gt;=&lt;/span&gt;colours&lt;span class="p"&gt;,&lt;/span&gt;
+              lwd&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+              point.col&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;black&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+              label.prop&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0.91&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+              radlab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+              radial.lim &lt;span class="o"&gt;=&lt;/span&gt; min_max&lt;span class="p"&gt;,&lt;/span&gt;
+              grid.col &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;#E0E0E0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+              col.sub &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;green&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+              mar&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+              show.radial.grid&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;
+
+  &lt;span class="p"&gt;)&lt;/span&gt;
+  title&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;main_title&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;\n\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  par&lt;span class="p"&gt;(&lt;/span&gt;xpd&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+  legend&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;9.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;-10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;legend_names&lt;span class="p"&gt;,&lt;/span&gt;lty&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;lwd&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;col&lt;span class="o"&gt;=&lt;/span&gt;colours&lt;span class="p"&gt;,&lt;/span&gt; cex&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; bty &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  par&lt;span class="p"&gt;(&lt;/span&gt;xpd&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;FALSE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+cluster_tibble &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; kmeans_obj&lt;span class="p"&gt;,&lt;/span&gt; cluster_name&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  tib &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; tibble&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="o"&gt;$&lt;/span&gt;OA&lt;span class="p"&gt;,&lt;/span&gt; kmeans_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;tib&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;OA_SA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; cluster_name&lt;span class="p"&gt;)&lt;/span&gt; 
+  &lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;tib&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Acquisition of data&lt;/h3&gt;
+&lt;p&gt;The raw data used for this study was the UK Census from 2011. The file from which this data is taken is the input data from Output Area Classification (OAC) 2011. This file includes all variables (167 in total) prior to variable selection for OAC. The geographical units used are output areas and the data is structured in the form of counts for each variable per output area (except in certain specified cases where rates are used). The dataset and lookup table was downloaded from http://geogale.github.io/2011OAC found in the "Input Data" section under the title "2011 OAC 167 Initial Variables Dataset".&lt;/p&gt;
+&lt;h3&gt;Variable selection&lt;/h3&gt;
+&lt;p&gt;The initial variable selection was made from the 167 variables found in the 2011 census data as described above.  The selection was carried out using the definition of consumer vulnerably given above in this work (section 1.1.3). This was achieved by choosing variables from the pool of raw variables based on whether they describe one of the five dimensions of vulnerability. A .csv file was created containing the variable choices made on this basis, documenting the dimension of vulnerability to which each variable belonged.  &lt;/p&gt;
+&lt;p&gt;Variables were pooled when they were found to be no more informative when considered separately, from a consumer vulnerability perspective, than they were  when considered together.  For example, for the purpose of consumer vulnerability, married people with children, are functionally the same as cohabiting people with children so these variables were pooled into a single variable. This step helped to improve final interpretability of the clusters.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Load data&lt;/span&gt;
+oa_data &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; readr&lt;span class="o"&gt;::&lt;/span&gt;read_csv&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2011_OAC_Raw_uVariables.csv&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error: &amp;#39;2011_OAC_Raw_uVariables.csv&amp;#39; does not exist in current working directory (&amp;#39;/home/michael/consumer_vulnerability&amp;#39;).
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;variable_choices &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; readr&lt;span class="o"&gt;::&lt;/span&gt;read_csv&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;K-means_version_5_variables.csv&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error: &amp;#39;K-means_version_5_variables.csv&amp;#39; does not exist in current working directory (&amp;#39;/home/michael/consumer_vulnerability&amp;#39;).
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;lookup_table &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; readr&lt;span class="o"&gt;::&lt;/span&gt;read_csv&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2011_OAC_Raw_uVariables_Lookup.csv&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Data Treatment&lt;/h3&gt;
+&lt;h4&gt;Counts to Percentages&lt;/h4&gt;
+&lt;p&gt;In order to use the selected data for clustering, counts were converted to percentages for each output area. In order to correctly find the percentage for each variable the correct denominator needed to be identified (e.g. total population, population over 16) for the percentage calculation. The denominator for each variable to correctly calculate the percentage was documented in the variable choice .csv file. In the cases of a variable describing a rate rather than a count, the rate measure was kept as is.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Prepare raw data to pecentages&lt;/span&gt;
+cv_pct_data &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; oa_data &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+  tibble&lt;span class="o"&gt;::&lt;/span&gt;add_column&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Rate&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# Add a column of just 100&amp;#39;s for use in percentage calcs below when already dealing with rates&lt;/span&gt;
+  count_to_percentage&lt;span class="p"&gt;(&lt;/span&gt;variable_choices&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; &lt;span class="c1"&gt;# Create percentages&lt;/span&gt;
+  base&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="kp"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;is.na&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# Replace any nan&amp;#39;s with 0&amp;#39;s &lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;mutate&lt;span class="p"&gt;(&lt;/span&gt;u062_u065 &lt;span class="o"&gt;=&lt;/span&gt; u062 &lt;span class="o"&gt;+&lt;/span&gt; u065&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# Combine married/cohabiting&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;mutate&lt;span class="p"&gt;(&lt;/span&gt;u063_u066 &lt;span class="o"&gt;=&lt;/span&gt; u063 &lt;span class="o"&gt;+&lt;/span&gt; u066&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# Combine married/cohabiting&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;mutate&lt;span class="p"&gt;(&lt;/span&gt;u064_u067 &lt;span class="o"&gt;=&lt;/span&gt; u064 &lt;span class="o"&gt;+&lt;/span&gt; u067&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# Combine married/cohabiting&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;mutate&lt;span class="p"&gt;(&lt;/span&gt;u049_u050 &lt;span class="o"&gt;=&lt;/span&gt; u049 &lt;span class="o"&gt;+&lt;/span&gt; u050&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# Combine english skills&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;mutate&lt;span class="p"&gt;(&lt;/span&gt;u127_u129 &lt;span class="o"&gt;=&lt;/span&gt; u127 &lt;span class="o"&gt;+&lt;/span&gt; u129&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# Comnine students&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;mutate&lt;span class="p"&gt;(&lt;/span&gt;u095_u096 &lt;span class="o"&gt;=&lt;/span&gt; u095 &lt;span class="o"&gt;+&lt;/span&gt; u096&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# combine occupancy rating&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;u062&lt;span class="o"&gt;:-&lt;/span&gt;u067&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# Remove married/cohabiting&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;u047&lt;span class="o"&gt;:-&lt;/span&gt;u050&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# Remove english skills&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;u127&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# remove students&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;u129&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# remove students&lt;/span&gt;
+  dplyr&lt;span class="o"&gt;::&lt;/span&gt;select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;u095&lt;span class="o"&gt;:-&lt;/span&gt;u099&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# remove occupancy&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(lhs, parent, parent): object &amp;#39;oa_data&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cv_pct_data &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; cv_pct_data&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="kp"&gt;order&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cv_pct_data&lt;span class="p"&gt;))]&lt;/span&gt; &lt;span class="c1"&gt;# sort colums by name # sort colums by name&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(expr, envir, enclos): object &amp;#39;cv_pct_data&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Make lookup maps&lt;/span&gt;
+keys &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;variable_choices&lt;span class="o"&gt;$&lt;/span&gt;VariableCode&lt;span class="p"&gt;,&lt;/span&gt; 
+                  &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;OA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                    &lt;span class="s"&gt;&amp;quot;u062_u065&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s"&gt;&amp;quot;u063_u066&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                    &lt;span class="s"&gt;&amp;quot;u064_u067&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s"&gt;&amp;quot;u049_u050&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s"&gt;&amp;quot;u127_u129&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="s"&gt;&amp;quot;u095_u096&amp;quot;&lt;/span&gt;
+                    &lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in as.list(c(variable_choices$VariableCode, c(&amp;quot;OA&amp;quot;, &amp;quot;u062_u065&amp;quot;, : object &amp;#39;variable_choices&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;values &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;variable_choices&lt;span class="o"&gt;$&lt;/span&gt;VariableLabel&lt;span class="p"&gt;,&lt;/span&gt; 
+                    &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Output Area&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Married or cohabiting: No children&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                      &lt;span class="s"&gt;&amp;quot;Married or cohabiting: Dependent children&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+                      &lt;span class="s"&gt;&amp;quot;Married or cohabiting: No dependent children&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                      &lt;span class="s"&gt;&amp;quot;Poor English Skils&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                      &lt;span class="s"&gt;&amp;quot;Student&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                      &lt;span class="s"&gt;&amp;quot;Crowded houseing&amp;quot;&lt;/span&gt;
+                      &lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in as.list(c(variable_choices$VariableLabel, c(&amp;quot;Output Area&amp;quot;, &amp;quot;Married or cohabiting: No children&amp;quot;, : object &amp;#39;variable_choices&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;lookup_map &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;list2env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;setNames&lt;span class="p"&gt;(&lt;/span&gt;values&lt;span class="p"&gt;,&lt;/span&gt; keys&lt;span class="p"&gt;),&lt;/span&gt; envir &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;new.env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;hash &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in setNames(values, keys): object &amp;#39;keys&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rev_lookup_map &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;list2env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;setNames&lt;span class="p"&gt;(&lt;/span&gt;keys&lt;span class="p"&gt;,&lt;/span&gt; values&lt;span class="p"&gt;),&lt;/span&gt; envir &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;new.env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;hash &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in setNames(keys, values): object &amp;#39;values&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Transformation&lt;/h4&gt;
+&lt;p&gt;Exploratory analysis of the data showed that there was a range of different distributions represented by the final variable choices. This was apparent through plotting histograms of each variable. A range of differing distributions creates a problem when using k-means as the algorithm is optimised to find spherical clusters and as such the optimal distribution for a successful k-means classification is the Gaussian distribution for input variables. In order to address this problem a transformation stage was performed. The transformation used was Inverse Hyperbolic Sine (IHS) which reduces the variance in variable distributions through increasing distance between small values and compressing distance between large values. An advantage of IHS is that unlike some other transformations it may also be used for zero or negative values.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Transformation (IHS)&lt;/span&gt;
+cv_ihs &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ihs&lt;span class="p"&gt;(&lt;/span&gt;cv_pct_data&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in as.tibble(log(input_df + sqrt(input_df^2 + 1))): object &amp;#39;cv_pct_data&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Standardisation&lt;/h4&gt;
+&lt;p&gt;In addition, the scale for the data was standardised. The method used in this work was the z-score which is a calculation of the number of standard deviations away from the variable mean a value is. Standardising the variable in this way is essential for effective k-means clustering as it prevents variables with larger scale ranges from being more influential and is standard practice when perfoming k-means.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Standardisation (Z-score)&lt;/span&gt;
+cv_ihs_z &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; z_scores&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in apply(input_df, 2, mean): object &amp;#39;cv_ihs&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# rename variables to give full names&lt;/span&gt;
+&lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map_chr&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; lookup_map&lt;span class="p"&gt;[[&lt;/span&gt;x&lt;span class="p"&gt;]])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map_chr(names(cv_ihs_z), function(x) lookup_map[[x]]): object &amp;#39;cv_ihs_z&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Corrolation&lt;/h4&gt;
+&lt;p&gt;Reducing the number of variables for consumer vulnerability clustering from the initial selection was an iterative process. This was performed by investigating the correlation of variables after treatment of the data for clustering (section 2.3).  Highly correlated variables (Pearson coefficient &amp;gt; 0.6) were considered for removal from the selection. However the final decision on whether a variable was kept or discarded was also based on interpretability of the final results rather than solely based on a coefficient cut-off.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Corrolation-------------------------------------------------------------------------&lt;/span&gt;
+cor_mat &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; cor&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in is.data.frame(x): object &amp;#39;cv_ihs_z&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;high_cor &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;colnames&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cor_mat&lt;span class="p"&gt;),&lt;/span&gt; cor_cutoff&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in is.data.frame(x): object &amp;#39;cor_mat&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;high_cor&lt;span class="p"&gt;[&lt;/span&gt;purrr&lt;span class="o"&gt;::&lt;/span&gt;map_lgl&lt;span class="p"&gt;(&lt;/span&gt;high_cor&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(expr, envir, enclos): object &amp;#39;high_cor&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Principal Component Analysis&lt;/h3&gt;
+&lt;p&gt;After selecting the variables for clustering and performing data transformation, there were still variables that were highly correlated which were kept as they increased the interpretability of the final clusters.  There were also a reasonably large number of variables remaining despite the original cluster choices being largely cut down. To help address these issues, principal component analysis (PCA) was performed on the treated dataset before clustering.&lt;/p&gt;
+&lt;p&gt;PCA is a dimensionality reduction technique which uses orthogonal transformation to convert potentially correlated variables into linearly uncorrelated principal components. It is frequently used alongside k-means  to lower the dimensionally of data while retaining as much variation as possible before clustering. This helps to avoid the "curse of dimensionality" sometimes experienced when clustering data. When PCA is performed before k-means the user must decide how many principal components will be used as input for the clustering step. This was achieved by looking at the variance explained by each principal component and the cumulative variance. An elbow plot was used to help to make this decision.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Perfom principle component analysis&lt;/span&gt;
+pca_obj &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; stats&lt;span class="o"&gt;::&lt;/span&gt;princomp&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;,&lt;/span&gt; scores &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;T&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in stats::princomp(cv_ihs_z, scores = T): object &amp;#39;cv_ihs_z&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can look at variation each componet explains.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Look at variation each componet explains&lt;/span&gt;
+pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(expr, envir, enclos): object &amp;#39;pca_obj&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;plot&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+     &lt;span class="c1"&gt;#main=&amp;quot;Variance explained by priciple components&amp;quot;,&lt;/span&gt;
+     xlab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Principal components&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+     ylab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Variance&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+     type &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;o&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in plot(pca_obj$sdev^2/sum(pca_obj$sdev^2), xlab = &amp;quot;Principal components&amp;quot;, : object &amp;#39;pca_obj&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can also look at the cumulative variation.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Look at cumulative variation&lt;/span&gt;
+&lt;span class="kp"&gt;cumsum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(expr, envir, enclos): object &amp;#39;pca_obj&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;plot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;cumsum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; 
+     &lt;span class="c1"&gt;#main=&amp;quot;Cumulative variance explained by priciple components&amp;quot;,&lt;/span&gt;
+     xlab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Principal Components&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+     ylab&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Cumulative Variance&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+     type &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;o&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in plot(cumsum(pca_obj$sdev^2/sum(pca_obj$sdev^2)), xlab = &amp;quot;Principal Components&amp;quot;, : object &amp;#39;pca_obj&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When IHS transformation is used the first 25 priciple explains 81% of variation&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# When IHS transformation is used the first 25 priciple explains 81% of variation&lt;/span&gt;
+num_pc &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The principal component loadings were examined to fin how prepresent each variable was by the first 10 principal components. In order explore this the loadings for the first 10 principal components were summed. The lowest represented variable was for the household variable "Other: All aged 65 and over". To contrast with this, the age bands exceeding 65 were quite highly represented. Examining the correlation of "Other: All aged 65 and over" with these variables, the Pearson coefficient was 0.70 for "Age 65 to 70", 0.77 for "Age 75 to 84" and 0.62 for "Age 85 to 89". In addition there is a high correlation with the "Retired" variable at a Pearson coefficient of 0.69. These findings are not surprising but do help to explain the lower representation of the "Other: All aged 65 and over" variable and gives confidence that it is not a concern. Overall there is a good representation of all variables within the principal component loadings that were used for clustering input.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#Loadings&lt;/span&gt;
+load &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;with&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;unclass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;loadings&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in with(pca_obj, unclass(loadings)): object &amp;#39;pca_obj&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;loadings &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;sweep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;load&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;colSums&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;load&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in abs(load): non-numeric argument to mathematical function
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;par&lt;span class="p"&gt;(&lt;/span&gt;mar&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+barplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rowSums&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;load&lt;/span&gt;&lt;span class="p"&gt;[,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;])),&lt;/span&gt; las&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; cex.names &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;#main = &amp;quot;Sum of Loadings for Principal components 1 to 10&amp;quot;, &lt;/span&gt;
+        ylab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Sum of Principal Componet Loadings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; border &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;blue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in load[, 1:num_pc]: object of type &amp;#39;closure&amp;#39; is not subsettable
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;K-means Clustering&lt;/h3&gt;
+&lt;p&gt;K-means is an iterative algorithm which finds clusters in data based on the centroids of clusters. Centroid position is random for initial step and subsequently updated at each iteration based on the previous cluster assignments . The initial cluster centroids are randomly selected and the number of clusters (k) must be chosen by the user. &lt;/p&gt;
+&lt;p&gt;K-means was performed using principal components generated from the PCA step as input. The optimum number of clusters was first determined by running k-means at each value of k from 2 to 25. Scree plots and smallest cluster plots from the results were then created. A scree or elbow plot shows the within cluster sum of squares for each cluster number when running k-means. The aim of such a plot is to show where the elbow is, suggesting an appropriate number of clusters, as there are diminishing returns after this point. A smallest cluster plot shows the size of the smallest cluster size when k-means is run for each number of clusters. This allows us to see at which point we start the get very small clusters, which is undesirable. &lt;/p&gt;
+&lt;p&gt;As the initialisation of centroids for k-means clustering was random, clustering was repeated for each value of k 25 times with different random centroid placement. From these 25 runs the result with the lowest total within sum of squares were chosen for the result.  Once an appropriate number of clusters was chosen, k-means was run again on the dataset 100 times at the selected number for k and the solution with the lowest within sum of squares was selected. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;iter &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;25&lt;/span&gt;
+k_choice_clust_list &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; k_comparison&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;scores&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;],&lt;/span&gt; iter&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in get(name, envir = envir): object &amp;#39;pca_obj&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;scree&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&gt;,&lt;/span&gt; iter&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;All data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map(k_choice_clust_list, ~.$tot.withinss): object &amp;#39;k_choice_clust_list&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Small clusters start after a k of ? and elbow plot shows decreasing WSS at around ?&lt;/span&gt;
+num_clusters &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
+
+nstart&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;100&lt;/span&gt;
+&lt;span class="kp"&gt;set.seed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;2494&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kp"&gt;system.time&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+  k_means_obj &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; k_means&lt;span class="p"&gt;(&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; pca_obj&lt;span class="o"&gt;$&lt;/span&gt;scores&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;],&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in as.matrix(x): object &amp;#39;pca_obj&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Timing stopped at: 0.002 0 0.002
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cluster_names &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Students and Young Professionals&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;On a Budget&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Prosperous Professionals&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                   &lt;span class="s"&gt;&amp;quot;Well Established&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Vulnerable Communities&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Vulnerable Pensioners&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To aid interpretation we can view how each cluster realtes to each variable (rather than principal components)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Compute a data frame (one row per cluster) containing the means of each variable in that cluster&lt;/span&gt;
+cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; plyr&lt;span class="o"&gt;::&lt;/span&gt;ddply&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;k_means_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;),&lt;/span&gt; numcolwise&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;))[,&lt;/span&gt; &lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in empty(.data): object &amp;#39;cv_ihs_z&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;row.names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; cluster_names
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;## Error in row.names(cluster_zscores) &amp;lt;- cluster_names: object &amp;#39;cluster_zscores&amp;#39; not found&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Sub-clusters&lt;/h3&gt;
+&lt;p&gt;In order to explore the clusters further, k-means clustering was applied to each cluster separately to create sub-clusters. For each cluster dataset the appropriate number for k was determined using the same method as when k-means was used on the whole data. To create the sub-clusters the k-means algorithm was run on each cluster data-set 100 times at the chosen number for k and the solution with the lowest within sum of squares was selected.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;### same steps for Sub groups&lt;/span&gt;
+cluster_selection &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; tibble&lt;span class="o"&gt;::&lt;/span&gt;as_tibble&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;cbind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;scores&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;],&lt;/span&gt; cluster&lt;span class="o"&gt;=&lt;/span&gt;k_means_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;,&lt;/span&gt; OA&lt;span class="o"&gt;=&lt;/span&gt;oa_data&lt;span class="o"&gt;$&lt;/span&gt;OA&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in cbind(pca_obj$scores[, 1:num_pc], cluster = k_means_obj$cluster, : object &amp;#39;pca_obj&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; run_kmeans_comp_subgroup&lt;span class="p"&gt;,&lt;/span&gt; cluster_selection&lt;span class="p"&gt;,&lt;/span&gt; num_pc&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(lhs, parent, parent): object &amp;#39;cluster_selection&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Again aid interpretation in the sub-clusters we can view how each cluster realtes to each variable . The sub-group z-score are assesed both as is (global mean comparision) and in realtion to their parent group (difference in z-score). &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sub_k &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+sub_groups &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; data&lt;span class="p"&gt;)&lt;/span&gt; dplyr&lt;span class="o"&gt;::&lt;/span&gt;filter&lt;span class="p"&gt;(&lt;/span&gt;data&lt;span class="p"&gt;,&lt;/span&gt; cluster&lt;span class="o"&gt;==&lt;/span&gt;subgroup&lt;span class="p"&gt;),&lt;/span&gt; cluster_selection&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in dplyr::filter(data, cluster == subgroup): object &amp;#39;cluster_selection&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sub_groups_kmeans &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map2&lt;span class="p"&gt;(&lt;/span&gt;sub_groups&lt;span class="p"&gt;,&lt;/span&gt; sub_k&lt;span class="p"&gt;,&lt;/span&gt; run_kmeans_subgroup&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map2(sub_groups, sub_k, run_kmeans_subgroup, nstart): object &amp;#39;sub_groups&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sub_cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; avg_z&lt;span class="p"&gt;,&lt;/span&gt; sub_groups_kmeans&lt;span class="p"&gt;,&lt;/span&gt; k_means_obj&lt;span class="p"&gt;,&lt;/span&gt; cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in cbind(cv_ihs_z, cluster = k_means_obj$cluster): object &amp;#39;cv_ihs_z&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cluster_z_diff &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;),&lt;/span&gt; 
+                      &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; cluster_difference&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;x&lt;span class="p"&gt;]],&lt;/span&gt; cluster_zscores&lt;span class="p"&gt;[&lt;/span&gt;x&lt;span class="p"&gt;,]))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map(1:length(sub_cluster_zscores), function(x) cluster_difference(sub_cluster_zscores[[x]], : object &amp;#39;sub_cluster_zscores&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Radial Plots&lt;/h3&gt;
+&lt;h4&gt;Groups&lt;/h4&gt;
+&lt;p&gt;Radial plots were produced for each cluster showing the z-scores for each variable. These show the strength of each characteristic in each cluster.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# groups to global&lt;/span&gt;
+purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;nrow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class="p"&gt;),&lt;/span&gt; 
+    &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_z_diff&lt;span class="p"&gt;,&lt;/span&gt; x&lt;span class="p"&gt;)&lt;/span&gt; radial_plot&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class="p"&gt;[&lt;/span&gt;x&lt;span class="p"&gt;,],&lt;/span&gt; cluster_names&lt;span class="p"&gt;[&lt;/span&gt;x&lt;span class="p"&gt;],&lt;/span&gt; min_max&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;-3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Group to global \n mean z-score\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in nrow(cluster_zscores): object &amp;#39;cluster_zscores&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Sub-groups&lt;/h4&gt;
+&lt;p&gt;Radial plots were produced for each cluster showing the z-scores for each variable compared to the gloab mean (red) and to the parent group mean (blue).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# sub to global and sub to group diff (red line is global, blue line is difference between group and subgroup)&lt;/span&gt;
+purrr&lt;span class="o"&gt;::&lt;/span&gt;pmap&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;,&lt;/span&gt; cluster_z_diff&lt;span class="p"&gt;,&lt;/span&gt; cluster_names&lt;span class="p"&gt;),&lt;/span&gt; 
+     &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;global&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;nrow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;global&lt;span class="p"&gt;),&lt;/span&gt; 
+                           &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;i&lt;span class="p"&gt;,&lt;/span&gt; global&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt; radial_plot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rbind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;global&lt;span class="p"&gt;[&lt;/span&gt;i&lt;span class="p"&gt;,],&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;i&lt;span class="p"&gt;,]),&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;name&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;- Sub-group&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; i&lt;span class="p"&gt;),&lt;/span&gt; min_max&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;-6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Subgroup to global \n mean z-score\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Subgroup to group \n mean z-score\n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+                           global&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;diff&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; name&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in is.data.frame(.l): object &amp;#39;sub_cluster_zscores&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In addition we can view all subgroups from each parant group an one plot to compare subgroups to each other. These radial plots show the subgroup z-scores compared to the global mean.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# all subgroups to global means&lt;/span&gt;
+purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;),&lt;/span&gt; 
+    &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; radial_plot&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;x&lt;span class="p"&gt;]],&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_names&lt;span class="p"&gt;[&lt;/span&gt;x&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;- Subgroups&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; min_max&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;-6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;nrow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;x&lt;span class="p"&gt;]]),&lt;/span&gt; 
+                                                                                                                   &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Subgroup&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; x&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map(1:length(sub_cluster_zscores), function(x) radial_plot(sub_cluster_zscores[[x]], : object &amp;#39;sub_cluster_zscores&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Group Heatmap&lt;/h3&gt;
+&lt;p&gt;A heatmap was produced showing the z-scores for each variable in each cluster in a single figure. The dendogram produced with the heatmap by hierarchical clustering of the six clusters grouped "Vulnerable Pensioners" and "Vulnerable Communities" with similarities in education, vehicle ownership, and employment and housing variables. The "Well Established", "Prosperous Professional" and "On a Budget" clusters were also grouped together with similarities in housing, vehicle and living arrangement variables. The "Students and Young Professionals" were not very strongly grouped with any other clusters but closer to "Well Established", "Prosperous Professional" and "On a Budget" clusters than "Vulnerable Pensioners" and "Vulnerable Communities".&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# groups heatmap &lt;/span&gt;
+sub_cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; map2&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;,&lt;/span&gt; cluster_names&lt;span class="p"&gt;,&lt;/span&gt; rename_rows&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in map2(sub_cluster_zscores, cluster_names, rename_rows): object &amp;#39;sub_cluster_zscores&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#pdf(&amp;quot;figures\\group_heatmap.pdf&amp;quot;, width = 250, height=350)&lt;/span&gt;
+create_heatmap&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in t(mean_cluster_zscores): object &amp;#39;cluster_zscores&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Sub-group Heatmap&lt;/h3&gt;
+&lt;p&gt;To further explore the character of the clusters, k-means was run on each cluster to produce sub-clusters. The number of sub-clusters chosen for each cluster were 5 sub-clusters for "Prosperous Professionals", 4 for "Well-Established", 4 for "Students ans Young Professionals", 5 for "On a Budget", 8 for "Vulnerable Communities" and 5 for "Vulnerable Pensioners". These sub-clusters were then displayed using a heatmap  complete with dendogram showing the clustering of sub-clusters using hierarchical clustering with Euclidean distance. The hierarchical clustering revealed that many of the sub groups from the same parent group clustered together as in the case of  the "Students and Young Professionals" sub-groups which all clusters together. However some subgroups from different parents groups clustered more closely with each other than with other subgroups from their own parents group. An example of this is "Vulnerable Pensioners: Sub-group 5", "Well Established: Subgroup 3" and "On a Budget: Subgroup 3" which clustered together with similarities in age structure and population employment domains. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# subgroups heatmap&lt;/span&gt;
+create_heatmap&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rbind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt;
+               &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;31&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in rbind(sub_cluster_zscores[[1]], sub_cluster_zscores[[2]], sub_cluster_zscores[[3]], : object &amp;#39;sub_cluster_zscores&amp;#39; not found
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="R"></category><category term="k-means"></category><category term="principal component analysis"></category><category term="PCA"></category><category term="census"></category><category term="consumer vulnerability"></category></entry></feed>
