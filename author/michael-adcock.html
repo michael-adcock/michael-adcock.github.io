@@ -1,75 +1,110 @@
+
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<link href="http://gmpg.org/xfn/11" rel="profile">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-		<!-- Enable responsiveness on mobile devices-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://michael-adcock.github.io/theme/stylesheet/style.min.css">
 
-		<title>Michael Adcock - Articles by Michael Adcock</title>
+  <link rel="stylesheet" type="text/css" href="https://michael-adcock.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://michael-adcock.github.io/theme/font-awesome/css/font-awesome.min.css">
 
-		<!-- CSS -->
-		<link href="//fonts.googleapis.com/" rel="dns-prefetch">
-		<link href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Abril+Fatface|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet">
 
-		<link rel="stylesheet" href="https://michael-adcock.github.io/theme/css/poole.css" />
-		<link rel="stylesheet" href="https://michael-adcock.github.io/theme/css/hyde.css" />
-		<link rel="stylesheet" href="https://michael-adcock.github.io/theme/css/syntax.css" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://michael-adcock.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Michael Adcock Atom">
 
-		<!-- RSS -->
-		<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-	</head>
 
-	<body class="theme-base-0d">
-<div class="sidebar">
-	<div class="container sidebar-sticky">
-		<div class="sidebar-about">
 
-			<h1>
-				<a href="/">
-					<img class="profile-picture" src="https://michael-adcock.github.io/images/">
-					Michael Adcock
-				</a>
-			</h1>
-			<p class="lead"></p>
-			<p class="lead"> </p>
-			<p></p>
-		</div>
-		<nav class="sidebar-nav">
-			<a class="sidebar-nav-item" href="mailto:guilherme.sft@gmail.com">
-				<i class="fa fa-envelope"></i>
-			</a>
-			<a class="sidebar-nav-item" href="">
-				<i class="fa fa-feed"></i>
-			</a>
-		</nav>
-	</div>
-</div>		<div class="content container">
-	<div class="posts">
-			<div class="post">
-				<h1 class="post-title" href="https://michael-adcock.github.io/switchpoints-in-crowding.html#switchpoints-in-crowding">
-					<a href="https://michael-adcock.github.io/switchpoints-in-crowding.html#switchpoints-in-crowding">Switchpoints in Crowding</a>
-				</h1>
-				<span class="post-date">Wed 08 June 2016</span>
-				<p>
-					
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+    <meta name="author" content="Michael Adcock" />
+    <meta name="description" content="" />
+<meta property="og:site_name" content="Michael Adcock"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Michael Adcock"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://michael-adcock.github.io"/>
+
+  <title>Michael Adcock &ndash;     Posts by Michael Adcock
+:</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://michael-adcock.github.io">
+        <img src="https://michael-adcock.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="https://michael-adcock.github.io"></a></h1>
+
+
+
+      <ul class="social">
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+
+
+<article>
+  <header>
+    <h2><a href="https://michael-adcock.github.io/switchpoints-in-crowding.html#switchpoints-in-crowding">Switchpoints in Crowding</a></h2>
+    <p>
+          Posted on Wed 08 June 2016 in <a href="https://michael-adcock.github.io/category/posts.html">posts</a>
+
+
+          &#8226;     Tagged with
+
+              <a href="https://michael-adcock.github.io/tag/pymc.html">pymc</a>,              <a href="https://michael-adcock.github.io/tag/bayesian.html">Bayesian</a>,              <a href="https://michael-adcock.github.io/tag/probabilistic-programming.html">probabilistic programming</a>,              <a href="https://michael-adcock.github.io/tag/agent-based-modeling.html">agent based modeling</a>,              <a href="https://michael-adcock.github.io/tag/abm.html">abm</a>
+    </p>
+  </header>
+  <div>
+      
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this post we have a look at how find switchpoints in a simple simulation of passenger crowding in a train station. This acheived using the Bayesian Inference library pymc. By find areas with clear switchpoints we can identify areas in the simulation which would be useful for predicting crowding in the simulation as a whole. This notebook is concerned only with a single example of an area of crowding which is manually selected. In future work the selection process will be automated by comparing the results of analysis of many areas in the simulation.</p>
-				</p>
-				<a class="read-more" href="switchpoints-in-crowding.html">Continue reading »</a>
-			</div>
-	</div>
-	<div class="pagination">
-		<span class="pagination-item older">Older</span>
-		<span class="pagination-item newer">Newer</span>
+      <br>
+      <a class="btn" href="https://michael-adcock.github.io/switchpoints-in-crowding.html#switchpoints-in-crowding">    Continue reading
+</a>
+  </div>
+</article>
 
-	</div>
-		</div>
-	</body>
+  <div class="pagination">
+  </div>
+
+
+
+
+    <footer>
+<p>&copy; Michael Adcock </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Michael Adcock ",
+  "url" : "https://michael-adcock.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
+</body>
 </html>
