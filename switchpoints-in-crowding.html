@@ -1,67 +1,89 @@
+
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Michael Adcock">
-  <meta name="description" content="Posts and writings by Michael Adcock">
-  <title>
-    Michael Adcock
-&ndash; Switchpoints in Crowding  </title>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-  <link href="//fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="https://michael-adcock.github.io/theme/images/logo.png">
-  <link href="https://michael-adcock.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Michael Adcock Atom" />
+    <link rel="stylesheet" type="text/css" href="https://michael-adcock.github.io/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="https://michael-adcock.github.io/theme/css/all.css">
-  <link rel="stylesheet" type="text/css" href="https://michael-adcock.github.io/theme/css/custom.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  
+  <link rel="stylesheet" type="text/css" href="https://michael-adcock.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://michael-adcock.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="https://michael-adcock.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Michael Adcock Atom">
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+<meta name="author" content="Michael Adcock" />
+<meta name="description" content="In this post we have a look at how find switchpoints in a simple simulation of passenger crowding in a train station. This acheived using the Bayesian Inference library pymc. By find areas with clear switchpoints we can identify areas in the simulation which would be useful for predicting crowding in the simulation as a whole. This notebook is concerned only with a single example of an area of crowding which is manually selected. In future work the selection process will be automated by comparing the results of analysis of many areas in the simulation." />
 <meta name="keywords" content="pymc, Bayesian, probabilistic programming, agent based modeling, abm">
+<meta property="og:site_name" content="Michael Adcock"/>
+<meta property="og:title" content="Switchpoints in Crowding"/>
+<meta property="og:description" content="In this post we have a look at how find switchpoints in a simple simulation of passenger crowding in a train station. This acheived using the Bayesian Inference library pymc. By find areas with clear switchpoints we can identify areas in the simulation which would be useful for predicting crowding in the simulation as a whole. This notebook is concerned only with a single example of an area of crowding which is manually selected. In future work the selection process will be automated by comparing the results of analysis of many areas in the simulation."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://michael-adcock.github.io/switchpoints-in-crowding.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-06-08 20:00:00+01:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://michael-adcock.github.io/author/michael-adcock.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="pymc"/>
+<meta property="article:tag" content="Bayesian"/>
+<meta property="article:tag" content="probabilistic programming"/>
+<meta property="article:tag" content="agent based modeling"/>
+<meta property="article:tag" content="abm"/>
+<meta property="og:image" content="">
+
+  <title>Michael Adcock &ndash; Switchpoints in Crowding</title>
+
 </head>
 <body>
-  <div class="container">
-    <div class="four columns sidebar">
-<nav>
-  <h1>Hi.</h1>
-  <a href="https://michael-adcock.github.io/">
-    <img src="https://michael-adcock.github.io/theme/images/logo.png" id="gravatar" alt="My photo"/>
-  </a>
-  <h2><a href="https://michael-adcock.github.io/">I'm Michael Adcock</a></h2>
+  <aside>
+    <div>
+      <a href="https://michael-adcock.github.io">
+        <img src="https://michael-adcock.github.io/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="https://michael-adcock.github.io"></a></h1>
 
-  <div id="bio">
-    <p></p>
-  </div>
 
-  <div id="social">
-Follow me:
-<div id="stalker">
+      <nav>
+        <ul class="list">
 
-<a title="Atom feed" href="https://michael-adcock.github.io/feeds/all.atom.xml">
-  <i class="fa fa-rss"></i>
-</a>
-</div>  </div>
+          <li><a href="https://github.com/michael-adcock" target="_blank">About</a></li>
+          <li><a href="https://www.linkedin.com/in/m-t-adcock/" target="_blank">Contact</a></li>
+        </ul>
+      </nav>
 
-  <div id="tags">
-    <ul>
+      <ul class="social">
+        <li><a class="sc-Github" href="https://github.com/michael-adcock" target="_blank"><i class="fa fa-Github"></i></a></li>
+        <li><a class="sc-Linked In" href="https://www.linkedin.com/in/m-t-adcock/" target="_blank"><i class="fa fa-Linked In"></i></a></li>
       </ul>
-  </div>
-</nav>    </div>
+    </div>
 
-    <div class="eleven columns content">
-  <p class="meta">
-    08 June 2016
-    <a href="/">
-      <i class="home fa fa-home"></i>
-    </a>
-  </p>
 
-  <h1 class="title"><a href="https://michael-adcock.github.io/switchpoints-in-crowding.html">Switchpoints in Crowding</a></h1>
-  
-  <div class="article_text" id="post">
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+    <h1 id="switchpoints-in-crowding">Switchpoints in Crowding</h1>
+    <p>
+          Posted on Wed 08 June 2016 in <a href="https://michael-adcock.github.io/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
     <style type="text/css">/*!
 *
 * IPython notebook
@@ -1782,27 +1804,40 @@ h6:hover .anchor-link {
 </script>
 
   </div>
-
-  <div class="article_meta related">
-    <h3>Category: </h3>
-    <span><a href="https://michael-adcock.github.io/category/posts.html">posts</span>
-    
-    <h3>Tags:</h3>
-    <span>
-      <a href="https://michael-adcock.github.io/tag/pymc.html">pymc</a>,      <a href="https://michael-adcock.github.io/tag/bayesian.html">Bayesian</a>,      <a href="https://michael-adcock.github.io/tag/probabilistic-programming.html">probabilistic programming</a>,      <a href="https://michael-adcock.github.io/tag/agent-based-modeling.html">agent based modeling</a>,      <a href="https://michael-adcock.github.io/tag/abm.html">abm</a>    </span>
-  </div>
-
-
-
-      <div class="footer">
-<div class="disclaimer">
-  
+  <div class="tag-cloud">
     <p>
-      © Michael Adcock,  &mdash; built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="https://github.com/karambir/taman" target="_blank">Taman</a>, a port of jekyll theme <a href="https://github.com/swanson/lagom" target="_blank">Lagom</a>.
+      <a href="https://michael-adcock.github.io/tag/pymc.html">pymc</a>
+      <a href="https://michael-adcock.github.io/tag/bayesian.html">Bayesian</a>
+      <a href="https://michael-adcock.github.io/tag/probabilistic-programming.html">probabilistic programming</a>
+      <a href="https://michael-adcock.github.io/tag/agent-based-modeling.html">agent based modeling</a>
+      <a href="https://michael-adcock.github.io/tag/abm.html">abm</a>
     </p>
-  </div>      </div>
-    </div>
   </div>
 
+
+
+
+</article>
+
+    <footer>
+<p>&copy; Michael Adcock </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Michael Adcock ",
+  "url" : "https://michael-adcock.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
 </body>
 </html>
