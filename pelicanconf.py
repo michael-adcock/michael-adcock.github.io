@@ -1,10 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
 AUTHOR = 'Michael Adcock'
 SITENAME = 'Michael Adcock'
-SITEURL = ''
+SITEURL = 'https://michael-adcock.github.io/'
+SITESUBTITLE = 'Data Scientist'
+#SITEDESCRIPTION = 'Projects related to data science'
+
 
 PATH = 'content'
 
@@ -19,15 +22,17 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+#EXTRA_PATH_METADATA = {
+#    'extra/custom.css': {'path': 'static/custom.css'},
+#}
+#CUSTOM_CSS = 'static/custom.css'
+#BROWSER_COLOR = '#333333'
+#PYGMENTS_STYLE = 'monokai'
 
-# Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+# Blogroll
+
+SOCIAL = (('github', 'https://github.com/michael-adcock'),
+         ('linkedin', 'https://www.linkedin.com/in/m-t-adcock/'))
 
 DEFAULT_PAGINATION = 10
 
@@ -36,9 +41,12 @@ DEFAULT_PAGINATION = 10
 
 MARKUP = ('md', 'ipynb')
 
-PLUGIN_PATH = './plugins'
+PLUGIN_PATHS = ['./plugins']
 PLUGINS = ['ipynb.markup']
+#, 'rmd_reader']
 
-THEME = "pelican-themes/voidy-bootstrap"
-PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['assets']
+THEME = "pelican-themes/Flex"
+
+STATIC_PATHS = ['figures']
+RMD_READER_RENAME_PLOT = 'directory'
+RMD_READER_KNITR_OPTS_CHUNK = {'fig.path': 'figures/'}
