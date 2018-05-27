@@ -2877,7 +2877,7 @@ create_heatmap&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class=
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-20-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="{attach}/figures/consumer_vulnerability_notebook_final/unnamed-chunk-20-1.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Sub-group Heatmap&lt;/h3&gt;
 &lt;p&gt;To further explore the character of the clusters, k-means was run on each cluster to produce sub-clusters. The number of sub-clusters chosen for each cluster were 5 sub-clusters for "Prosperous Professionals", 4 for "Well-Established", 4 for "Students ans Young Professionals", 5 for "On a Budget", 8 for "Vulnerable Communities" and 5 for "Vulnerable Pensioners". These sub-clusters were then displayed using a heatmap  complete with dendogram showing the clustering of sub-clusters using hierarchical clustering with Euclidean distance. The hierarchical clustering revealed that many of the sub groups from the same parent group clustered together as in the case of  the "Students and Young Professionals" sub-groups which all clusters together. However some subgroups from different parents groups clustered more closely with each other than with other subgroups from their own parents group. An example of this is "Vulnerable Pensioners: Sub-group 5", "Well Established: Subgroup 3" and "On a Budget: Subgroup 3" which clustered together with similarities in age structure and population employment domains. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# subgroups heatmap&lt;/span&gt;
