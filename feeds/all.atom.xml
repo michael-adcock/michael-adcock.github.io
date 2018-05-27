@@ -1763,14 +1763,7 @@ geodemographic classification shows improvement in cluster tightness.&lt;/p&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;rgdal&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;parallel&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;plotrix&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in library(plotrix): there is no package called &amp;#39;plotrix&amp;#39;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ggplot2&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ggplot2&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;reshape2&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sf&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -1928,22 +1921,8 @@ cluster_tibble &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&
 &lt;p&gt;Variables were pooled when they were found to be no more informative when considered separately, from a consumer vulnerability perspective, than they were  when considered together.  For example, for the purpose of consumer vulnerability, married people with children, are functionally the same as cohabiting people with children so these variables were pooled into a single variable. This step helped to improve final interpretability of the clusters.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Load data&lt;/span&gt;
 oa_data &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; readr&lt;span class="o"&gt;::&lt;/span&gt;read_csv&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2011_OAC_Raw_uVariables.csv&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error: &amp;#39;2011_OAC_Raw_uVariables.csv&amp;#39; does not exist in current working directory (&amp;#39;/home/michael/consumer_vulnerability&amp;#39;).
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;variable_choices &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; readr&lt;span class="o"&gt;::&lt;/span&gt;read_csv&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;K-means_version_5_variables.csv&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error: &amp;#39;K-means_version_5_variables.csv&amp;#39; does not exist in current working directory (&amp;#39;/home/michael/consumer_vulnerability&amp;#39;).
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;lookup_table &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; readr&lt;span class="o"&gt;::&lt;/span&gt;read_csv&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2011_OAC_Raw_uVariables_Lookup.csv&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+variable_choices &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; readr&lt;span class="o"&gt;::&lt;/span&gt;read_csv&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;K-means_version_5_variables.csv&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+lookup_table &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; readr&lt;span class="o"&gt;::&lt;/span&gt;read_csv&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;2011_OAC_Raw_uVariables_Lookup.csv&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1966,22 +1945,10 @@ cv_pct_data &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; oa_data &lt;span class=
   dplyr&lt;span class="o"&gt;::&lt;/span&gt;select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;u127&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# remove students&lt;/span&gt;
   dplyr&lt;span class="o"&gt;::&lt;/span&gt;select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;u129&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;  &lt;span class="c1"&gt;# remove students&lt;/span&gt;
   dplyr&lt;span class="o"&gt;::&lt;/span&gt;select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;u095&lt;span class="o"&gt;:-&lt;/span&gt;u099&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# remove occupancy&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
 
+cv_pct_data &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; cv_pct_data&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="kp"&gt;order&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cv_pct_data&lt;span class="p"&gt;))]&lt;/span&gt; &lt;span class="c1"&gt;# sort colums by name # sort colums by name&lt;/span&gt;
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(lhs, parent, parent): object &amp;#39;oa_data&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cv_pct_data &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; cv_pct_data&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="kp"&gt;order&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cv_pct_data&lt;span class="p"&gt;))]&lt;/span&gt; &lt;span class="c1"&gt;# sort colums by name # sort colums by name&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(expr, envir, enclos): object &amp;#39;cv_pct_data&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Make lookup maps&lt;/span&gt;
+&lt;span class="c1"&gt;# Make lookup maps&lt;/span&gt;
 keys &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;variable_choices&lt;span class="o"&gt;$&lt;/span&gt;VariableCode&lt;span class="p"&gt;,&lt;/span&gt; 
                   &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;OA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
                     &lt;span class="s"&gt;&amp;quot;u062_u065&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -1991,14 +1958,8 @@ keys &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list
                     &lt;span class="s"&gt;&amp;quot;u127_u129&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                     &lt;span class="s"&gt;&amp;quot;u095_u096&amp;quot;&lt;/span&gt;
                     &lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
 
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in as.list(c(variable_choices$VariableCode, c(&amp;quot;OA&amp;quot;, &amp;quot;u062_u065&amp;quot;, : object &amp;#39;variable_choices&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;values &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;variable_choices&lt;span class="o"&gt;$&lt;/span&gt;VariableLabel&lt;span class="p"&gt;,&lt;/span&gt; 
+values &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;variable_choices&lt;span class="o"&gt;$&lt;/span&gt;VariableLabel&lt;span class="p"&gt;,&lt;/span&gt; 
                     &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Output Area&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Married or cohabiting: No children&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
                       &lt;span class="s"&gt;&amp;quot;Married or cohabiting: Dependent children&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
                       &lt;span class="s"&gt;&amp;quot;Married or cohabiting: No dependent children&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -2006,26 +1967,9 @@ keys &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.list
                       &lt;span class="s"&gt;&amp;quot;Student&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                       &lt;span class="s"&gt;&amp;quot;Crowded houseing&amp;quot;&lt;/span&gt;
                       &lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
 
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in as.list(c(variable_choices$VariableLabel, c(&amp;quot;Output Area&amp;quot;, &amp;quot;Married or cohabiting: No children&amp;quot;, : object &amp;#39;variable_choices&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;lookup_map &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;list2env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;setNames&lt;span class="p"&gt;(&lt;/span&gt;values&lt;span class="p"&gt;,&lt;/span&gt; keys&lt;span class="p"&gt;),&lt;/span&gt; envir &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;new.env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;hash &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in setNames(values, keys): object &amp;#39;keys&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rev_lookup_map &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;list2env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;setNames&lt;span class="p"&gt;(&lt;/span&gt;keys&lt;span class="p"&gt;,&lt;/span&gt; values&lt;span class="p"&gt;),&lt;/span&gt; envir &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;new.env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;hash &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in setNames(keys, values): object &amp;#39;values&amp;#39; not found
+lookup_map &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;list2env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;setNames&lt;span class="p"&gt;(&lt;/span&gt;values&lt;span class="p"&gt;,&lt;/span&gt; keys&lt;span class="p"&gt;),&lt;/span&gt; envir &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;new.env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;hash &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+rev_lookup_map &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;list2env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;setNames&lt;span class="p"&gt;(&lt;/span&gt;keys&lt;span class="p"&gt;,&lt;/span&gt; values&lt;span class="p"&gt;),&lt;/span&gt; envir &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;new.env&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;hash &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2036,27 +1980,13 @@ cv_ihs &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; ihs&lt;span class="p"&gt;(&l
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in as.tibble(log(input_df + sqrt(input_df^2 + 1))): object &amp;#39;cv_pct_data&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h4&gt;Standardisation&lt;/h4&gt;
 &lt;p&gt;In addition, the scale for the data was standardised. The method used in this work was the z-score which is a calculation of the number of standard deviations away from the variable mean a value is. Standardising the variable in this way is essential for effective k-means clustering as it prevents variables with larger scale ranges from being more influential and is standard practice when perfoming k-means.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Standardisation (Z-score)&lt;/span&gt;
 cv_ihs_z &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; z_scores&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
 
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in apply(input_df, 2, mean): object &amp;#39;cv_ihs&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# rename variables to give full names&lt;/span&gt;
+&lt;span class="c1"&gt;# rename variables to give full names&lt;/span&gt;
 &lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map_chr&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; lookup_map&lt;span class="p"&gt;[[&lt;/span&gt;x&lt;span class="p"&gt;]])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map_chr(names(cv_ihs_z), function(x) lookup_map[[x]]): object &amp;#39;cv_ihs_z&amp;#39; not found
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2064,26 +1994,212 @@ cv_ihs_z &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; z_scores&lt;span class="p"
 &lt;p&gt;Reducing the number of variables for consumer vulnerability clustering from the initial selection was an iterative process. This was performed by investigating the correlation of variables after treatment of the data for clustering (section 2.3).  Highly correlated variables (Pearson coefficient &amp;gt; 0.6) were considered for removal from the selection. However the final decision on whether a variable was kept or discarded was also based on interpretability of the final results rather than solely based on a coefficient cut-off.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Corrolation-------------------------------------------------------------------------&lt;/span&gt;
 cor_mat &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; cor&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt;
+high_cor &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;colnames&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cor_mat&lt;span class="p"&gt;),&lt;/span&gt; cor_cutoff&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+high_cor&lt;span class="p"&gt;[&lt;/span&gt;purrr&lt;span class="o"&gt;::&lt;/span&gt;map_lgl&lt;span class="p"&gt;(&lt;/span&gt;high_cor&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in is.data.frame(x): object &amp;#39;cv_ihs_z&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;high_cor &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;colnames&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cor_mat&lt;span class="p"&gt;),&lt;/span&gt; cor_cutoff&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in is.data.frame(x): object &amp;#39;cor_mat&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;high_cor&lt;span class="p"&gt;[&lt;/span&gt;purrr&lt;span class="o"&gt;::&lt;/span&gt;map_lgl&lt;span class="p"&gt;(&lt;/span&gt;high_cor&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(expr, envir, enclos): object &amp;#39;high_cor&amp;#39; not found
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [[1]]
+## Age 25 to 29      Retired 
+##    1.0000000   -0.6009528 
+## 
+## [[2]]
+## Age 60 to 64 Age 65 to 74      Retired 
+##    1.0000000    0.6762770    0.7483487 
+## 
+## [[3]]
+##                 Age 60 to 64                 Age 65 to 74 
+##                    0.6762770                    1.0000000 
+##                 Age 75 to 84 One person household: &amp;gt;=  65 
+##                    0.7133097                    0.7038382 
+##                      Retired 
+##                    0.9303259 
+## 
+## [[4]]
+##                 Age 65 to 74                 Age 75 to 84 
+##                    0.7133097                    1.0000000 
+##                 Age 85 to 89 One person household: &amp;gt;=  65 
+##                    0.6354057                    0.7741075 
+##                      Retired 
+##                    0.7283789 
+## 
+## [[5]]
+##                 Age 75 to 84                 Age 85 to 89 
+##                    0.6354057                    1.0000000 
+##                    Age &amp;gt;= 90 One person household: &amp;gt;=  65 
+##                    0.6078266                    0.6151039 
+## 
+## [[6]]
+## Age 85 to 89    Age &amp;gt;= 90 
+##    0.6078266    1.0000000 
+## 
+## [[7]]
+##                 Age 65 to 74                 Age 75 to 84 
+##                    0.7038382                    0.7741075 
+##                 Age 85 to 89 One person household: &amp;gt;=  65 
+##                    0.6151039                    1.0000000 
+##                      Retired 
+##                    0.6898363 
+## 
+## [[8]]
+## One person household: Other                       Flats 
+##                   1.0000000                   0.6199775 
+## 
+## [[9]]
+## Married or cohabiting: Dependent children 
+##                                 1.0000000 
+##                          Very good health 
+##                                 0.6126617 
+## 
+## [[10]]
+##   Whole house or bungalow: Detached                    Crowded houseing 
+##                           1.0000000                           0.6224693 
+##        No cars or vans in household 2 or more cars or vans in household 
+##                          -0.7170235                           0.7199298 
+## 
+## [[11]]
+##         One person household: Other                               Flats 
+##                           0.6199775                           1.0000000 
+##                    Crowded houseing 2 or more cars or vans in household 
+##                          -0.6470808                          -0.6091593 
+## 
+## [[12]]
+##          Owned and Shared Ownership                       Social rented 
+##                           1.0000000                          -0.6408435 
+##                    Crowded houseing        No cars or vans in household 
+##                           0.7169065                          -0.6162756 
+## 2 or more cars or vans in household 
+##                           0.7515816 
+## 
+## [[13]]
+##   Owned and Shared Ownership                Social rented 
+##                   -0.6408435                    1.0000000 
+## No cars or vans in household   Long-term sick or disabled 
+##                    0.6378717                    0.6232023 
+## 
+## [[14]]
+##   Whole house or bungalow: Detached                               Flats 
+##                           0.6224693                          -0.6470808 
+##          Owned and Shared Ownership                    Crowded houseing 
+##                           0.7169065                           1.0000000 
+##        No cars or vans in household 2 or more cars or vans in household 
+##                          -0.6324442                           0.7583832 
+## 
+## [[15]]
+## Day-to-day activities limited              Very good health 
+##                     1.0000000                    -0.7366968 
+##                   Fair health                    Bad health 
+##                     0.8021976                     0.7570691 
+##             No qualifications    Long-term sick or disabled 
+##                     0.7671245                     0.6338326 
+## 
+## [[16]]
+## Married or cohabiting: Dependent children 
+##                                 0.6126617 
+##             Day-to-day activities limited 
+##                                -0.7366968 
+##                          Very good health 
+##                                 1.0000000 
+##                               Fair health 
+##                                -0.6484393 
+## 
+## [[17]]
+## Day-to-day activities limited              Very good health 
+##                     0.8021976                    -0.6484393 
+##                   Fair health                    Bad health 
+##                     1.0000000                     0.6383888 
+##             No qualifications 
+##                     0.7664267 
+## 
+## [[18]]
+## Day-to-day activities limited                   Fair health 
+##                     0.7570691                     0.6383888 
+##                    Bad health             No qualifications 
+##                     1.0000000                     0.7009737 
+##    Long-term sick or disabled 
+##                     0.6951246 
+## 
+## [[19]]
+##     Day-to-day activities limited                       Fair health 
+##                         0.7671245                         0.7664267 
+##                        Bad health                 No qualifications 
+##                         0.7009737                         1.0000000 
+## Highest qualification: &amp;gt;= Level 4        Long-term sick or disabled 
+##                        -0.7631472                         0.6253844 
+##          Professional occupations 
+##                        -0.6740730 
+## 
+## [[20]]
+##                        No qualifications 
+##                               -0.7631472 
+##        Highest qualification: &amp;gt;= Level 4 
+##                                1.0000000 
+##               Long-term sick or disabled 
+##                               -0.6066099 
+## Managers, directors and senior officials 
+##                                0.6315341 
+##                 Professional occupations 
+##                                0.8643247 
+##     Associate professional and technical 
+##                                0.6642001 
+## 
+## [[21]]
+##   Whole house or bungalow: Detached          Owned and Shared Ownership 
+##                          -0.7170235                          -0.6162756 
+##                       Social rented                    Crowded houseing 
+##                           0.6378717                          -0.6324442 
+##        No cars or vans in household 2 or more cars or vans in household 
+##                           1.0000000                          -0.7995621 
+## 
+## [[22]]
+##   Whole house or bungalow: Detached                               Flats 
+##                           0.7199298                          -0.6091593 
+##          Owned and Shared Ownership                    Crowded houseing 
+##                           0.7515816                           0.7583832 
+##        No cars or vans in household 2 or more cars or vans in household 
+##                          -0.7995621                           1.0000000 
+## 
+## [[23]]
+##                            Self-employed 
+##                                1.0000000 
+## Managers, directors and senior officials 
+##                                0.6226272 
+## 
+## [[24]]
+##                 Age 25 to 29                 Age 60 to 64 
+##                   -0.6009528                    0.7483487 
+##                 Age 65 to 74                 Age 75 to 84 
+##                    0.9303259                    0.7283789 
+## One person household: &amp;gt;=  65                      Retired 
+##                    0.6898363                    1.0000000 
+## 
+## [[25]]
+##                     Social rented     Day-to-day activities limited 
+##                         0.6232023                         0.6338326 
+##                        Bad health                 No qualifications 
+##                         0.6951246                         0.6253844 
+## Highest qualification: &amp;gt;= Level 4        Long-term sick or disabled 
+##                        -0.6066099                         1.0000000 
+## 
+## [[26]]
+##        Highest qualification: &amp;gt;= Level 4 
+##                                0.6315341 
+##                            Self-employed 
+##                                0.6226272 
+## Managers, directors and senior officials 
+##                                1.0000000 
+## 
+## [[27]]
+##                    No qualifications    Highest qualification: &amp;gt;= Level 4 
+##                           -0.6740730                            0.8643247 
+##             Professional occupations Associate professional and technical 
+##                            1.0000000                            0.6324629 
+## 
+## [[28]]
+##    Highest qualification: &amp;gt;= Level 4             Professional occupations 
+##                            0.6642001                            0.6324629 
+## Associate professional and technical 
+##                            1.0000000
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2095,17 +2211,38 @@ pca_obj &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; stats&lt;span class="o"&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in stats::princomp(cv_ihs_z, scores = T): object &amp;#39;cv_ihs_z&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;We can look at variation each componet explains.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Look at variation each componet explains&lt;/span&gt;
 pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(expr, envir, enclos): object &amp;#39;pca_obj&amp;#39; not found
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;##       Comp.1       Comp.2       Comp.3       Comp.4       Comp.5 
+## 0.1975901584 0.1670138959 0.0978362094 0.0459346094 0.0359967077 
+##       Comp.6       Comp.7       Comp.8       Comp.9      Comp.10 
+## 0.0311052455 0.0239476712 0.0202571869 0.0182858240 0.0179127696 
+##      Comp.11      Comp.12      Comp.13      Comp.14      Comp.15 
+## 0.0147648013 0.0144446687 0.0142151210 0.0134479015 0.0120634714 
+##      Comp.16      Comp.17      Comp.18      Comp.19      Comp.20 
+## 0.0118792615 0.0108562192 0.0106571552 0.0102412626 0.0098802908 
+##      Comp.21      Comp.22      Comp.23      Comp.24      Comp.25 
+## 0.0094481845 0.0092024290 0.0091019221 0.0089562946 0.0085281870 
+##      Comp.26      Comp.27      Comp.28      Comp.29      Comp.30 
+## 0.0080004497 0.0079004968 0.0078697059 0.0075594576 0.0072820050 
+##      Comp.31      Comp.32      Comp.33      Comp.34      Comp.35 
+## 0.0070081112 0.0068511666 0.0066095603 0.0065055815 0.0062275930 
+##      Comp.36      Comp.37      Comp.38      Comp.39      Comp.40 
+## 0.0061569703 0.0060947324 0.0059531902 0.0058181003 0.0055392923 
+##      Comp.41      Comp.42      Comp.43      Comp.44      Comp.45 
+## 0.0052262950 0.0051758398 0.0049676091 0.0047944031 0.0045788334 
+##      Comp.46      Comp.47      Comp.48      Comp.49      Comp.50 
+## 0.0045017607 0.0040835960 0.0040337823 0.0039130858 0.0035591423 
+##      Comp.51      Comp.52      Comp.53      Comp.54      Comp.55 
+## 0.0033986543 0.0033036418 0.0030551303 0.0029511841 0.0025320804 
+##      Comp.56      Comp.57      Comp.58      Comp.59      Comp.60 
+## 0.0024629900 0.0023318607 0.0021472566 0.0017952480 0.0017312859 
+##      Comp.61      Comp.62      Comp.63      Comp.64 
+## 0.0014692103 0.0012910101 0.0010081484 0.0007440902
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2117,17 +2254,33 @@ pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in plot(pca_obj$sdev^2/sum(pca_obj$sdev^2), xlab = &amp;quot;Principal components&amp;quot;, : object &amp;#39;pca_obj&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-8-1.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We can also look at the cumulative variation.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Look at cumulative variation&lt;/span&gt;
 &lt;span class="kp"&gt;cumsum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(expr, envir, enclos): object &amp;#39;pca_obj&amp;#39; not found
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;##    Comp.1    Comp.2    Comp.3    Comp.4    Comp.5    Comp.6    Comp.7 
+## 0.1975902 0.3646041 0.4624403 0.5083749 0.5443716 0.5754768 0.5994245 
+##    Comp.8    Comp.9   Comp.10   Comp.11   Comp.12   Comp.13   Comp.14 
+## 0.6196817 0.6379675 0.6558803 0.6706451 0.6850897 0.6993049 0.7127528 
+##   Comp.15   Comp.16   Comp.17   Comp.18   Comp.19   Comp.20   Comp.21 
+## 0.7248162 0.7366955 0.7475517 0.7582089 0.7684501 0.7783304 0.7877786 
+##   Comp.22   Comp.23   Comp.24   Comp.25   Comp.26   Comp.27   Comp.28 
+## 0.7969810 0.8060830 0.8150393 0.8235674 0.8315679 0.8394684 0.8473381 
+##   Comp.29   Comp.30   Comp.31   Comp.32   Comp.33   Comp.34   Comp.35 
+## 0.8548976 0.8621796 0.8691877 0.8760388 0.8826484 0.8891540 0.8953816 
+##   Comp.36   Comp.37   Comp.38   Comp.39   Comp.40   Comp.41   Comp.42 
+## 0.9015385 0.9076333 0.9135865 0.9194046 0.9249439 0.9301702 0.9353460 
+##   Comp.43   Comp.44   Comp.45   Comp.46   Comp.47   Comp.48   Comp.49 
+## 0.9403136 0.9451080 0.9496868 0.9541886 0.9582722 0.9623060 0.9662191 
+##   Comp.50   Comp.51   Comp.52   Comp.53   Comp.54   Comp.55   Comp.56 
+## 0.9697782 0.9731769 0.9764805 0.9795356 0.9824868 0.9850189 0.9874819 
+##   Comp.57   Comp.58   Comp.59   Comp.60   Comp.61   Comp.62   Comp.63 
+## 0.9898138 0.9919610 0.9937563 0.9954875 0.9969568 0.9982478 0.9992559 
+##   Comp.64 
+## 1.0000000
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2139,10 +2292,7 @@ pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in plot(cumsum(pca_obj$sdev^2/sum(pca_obj$sdev^2)), xlab = &amp;quot;Principal Components&amp;quot;, : object &amp;#39;pca_obj&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-9-1.png" /&gt;&lt;/p&gt;
 &lt;p&gt;When IHS transformation is used the first 25 priciple explains 81% of variation&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# When IHS transformation is used the first 25 priciple explains 81% of variation&lt;/span&gt;
 num_pc &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;
@@ -2152,52 +2302,26 @@ num_pc &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;10&lt;
 &lt;p&gt;The principal component loadings were examined to fin how prepresent each variable was by the first 10 principal components. In order explore this the loadings for the first 10 principal components were summed. The lowest represented variable was for the household variable "Other: All aged 65 and over". To contrast with this, the age bands exceeding 65 were quite highly represented. Examining the correlation of "Other: All aged 65 and over" with these variables, the Pearson coefficient was 0.70 for "Age 65 to 70", 0.77 for "Age 75 to 84" and 0.62 for "Age 85 to 89". In addition there is a high correlation with the "Retired" variable at a Pearson coefficient of 0.69. These findings are not surprising but do help to explain the lower representation of the "Other: All aged 65 and over" variable and gives confidence that it is not a concern. Overall there is a good representation of all variables within the principal component loadings that were used for clustering input.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#Loadings&lt;/span&gt;
 load &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;with&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;unclass&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;loadings&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+loadings &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;sweep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;load&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;colSums&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;load&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in with(pca_obj, unclass(loadings)): object &amp;#39;pca_obj&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;loadings &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;sweep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;load&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;colSums&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;load&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in abs(load): non-numeric argument to mathematical function
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;par&lt;span class="p"&gt;(&lt;/span&gt;mar&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+par&lt;span class="p"&gt;(&lt;/span&gt;mar&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;15&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 barplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rowSums&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;load&lt;/span&gt;&lt;span class="p"&gt;[,&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;])),&lt;/span&gt; las&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; cex.names &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0.6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;#main = &amp;quot;Sum of Loadings for Principal components 1 to 10&amp;quot;, &lt;/span&gt;
         ylab &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Sum of Principal Componet Loadings&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; border &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;blue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in load[, 1:num_pc]: object of type &amp;#39;closure&amp;#39; is not subsettable
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-11-1.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;K-means Clustering&lt;/h3&gt;
 &lt;p&gt;K-means is an iterative algorithm which finds clusters in data based on the centroids of clusters. Centroid position is random for initial step and subsequently updated at each iteration based on the previous cluster assignments . The initial cluster centroids are randomly selected and the number of clusters (k) must be chosen by the user. &lt;/p&gt;
 &lt;p&gt;K-means was performed using principal components generated from the PCA step as input. The optimum number of clusters was first determined by running k-means at each value of k from 2 to 25. Scree plots and smallest cluster plots from the results were then created. A scree or elbow plot shows the within cluster sum of squares for each cluster number when running k-means. The aim of such a plot is to show where the elbow is, suggesting an appropriate number of clusters, as there are diminishing returns after this point. A smallest cluster plot shows the size of the smallest cluster size when k-means is run for each number of clusters. This allows us to see at which point we start the get very small clusters, which is undesirable. &lt;/p&gt;
 &lt;p&gt;As the initialisation of centroids for k-means clustering was random, clustering was repeated for each value of k 25 times with different random centroid placement. From these 25 runs the result with the lowest total within sum of squares were chosen for the result.  Once an appropriate number of clusters was chosen, k-means was run again on the dataset 100 times at the selected number for k and the solution with the lowest within sum of squares was selected. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;iter &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;25&lt;/span&gt;
 k_choice_clust_list &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; k_comparison&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;scores&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;],&lt;/span&gt; iter&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+scree&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&gt;,&lt;/span&gt; iter&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;All data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in get(name, envir = envir): object &amp;#39;pca_obj&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;scree&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&gt;,&lt;/span&gt; iter&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;All data&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map(k_choice_clust_list, ~.$tot.withinss): object &amp;#39;k_choice_clust_list&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-1.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-2.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Small clusters start after a k of ? and elbow plot shows decreasing WSS at around ?&lt;/span&gt;
 num_clusters &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
 
@@ -2209,11 +2333,8 @@ nstart&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;100&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in as.matrix(x): object &amp;#39;pca_obj&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Timing stopped at: 0.002 0 0.002
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;##    user  system elapsed 
+## 856.426   0.000 860.510
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2225,18 +2346,7 @@ nstart&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;100&lt;/span&gt;
 &lt;p&gt;To aid interpretation we can view how each cluster realtes to each variable (rather than principal components)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Compute a data frame (one row per cluster) containing the means of each variable in that cluster&lt;/span&gt;
 cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; plyr&lt;span class="o"&gt;::&lt;/span&gt;ddply&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;k_means_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;),&lt;/span&gt; numcolwise&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;))[,&lt;/span&gt; &lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in empty(.data): object &amp;#39;cv_ihs_z&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;row.names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; cluster_names
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;## Error in row.names(cluster_zscores) &amp;lt;- cluster_names: object &amp;#39;cluster_zscores&amp;#39; not found&lt;/span&gt;
+&lt;span class="kp"&gt;row.names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; cluster_names
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2244,53 +2354,38 @@ cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; plyr&lt;span class=
 &lt;p&gt;In order to explore the clusters further, k-means clustering was applied to each cluster separately to create sub-clusters. For each cluster dataset the appropriate number for k was determined using the same method as when k-means was used on the whole data. To create the sub-clusters the k-means algorithm was run on each cluster data-set 100 times at the chosen number for k and the solution with the lowest within sum of squares was selected.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;### same steps for Sub groups&lt;/span&gt;
 cluster_selection &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; tibble&lt;span class="o"&gt;::&lt;/span&gt;as_tibble&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;cbind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;scores&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;],&lt;/span&gt; cluster&lt;span class="o"&gt;=&lt;/span&gt;k_means_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;,&lt;/span&gt; OA&lt;span class="o"&gt;=&lt;/span&gt;oa_data&lt;span class="o"&gt;$&lt;/span&gt;OA&lt;span class="p"&gt;))&lt;/span&gt;
+map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; run_kmeans_comp_subgroup&lt;span class="p"&gt;,&lt;/span&gt; cluster_selection&lt;span class="p"&gt;,&lt;/span&gt; num_pc&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in cbind(pca_obj$scores[, 1:num_pc], cluster = k_means_obj$cluster, : object &amp;#39;pca_obj&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; run_kmeans_comp_subgroup&lt;span class="p"&gt;,&lt;/span&gt; cluster_selection&lt;span class="p"&gt;,&lt;/span&gt; num_pc&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in eval(lhs, parent, parent): object &amp;#39;cluster_selection&amp;#39; not found
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-1.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-2.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-3.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-4.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-5.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-6.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-7.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-8.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-9.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-10.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-11.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-12.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [[1]]
+## NULL
+## 
+## [[2]]
+## NULL
+## 
+## [[3]]
+## NULL
+## 
+## [[4]]
+## NULL
+## 
+## [[5]]
+## NULL
+## 
+## [[6]]
+## NULL
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Again aid interpretation in the sub-clusters we can view how each cluster realtes to each variable . The sub-group z-score are assesed both as is (global mean comparision) and in realtion to their parent group (difference in z-score). &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sub_k &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 sub_groups &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; data&lt;span class="p"&gt;)&lt;/span&gt; dplyr&lt;span class="o"&gt;::&lt;/span&gt;filter&lt;span class="p"&gt;(&lt;/span&gt;data&lt;span class="p"&gt;,&lt;/span&gt; cluster&lt;span class="o"&gt;==&lt;/span&gt;subgroup&lt;span class="p"&gt;),&lt;/span&gt; cluster_selection&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in dplyr::filter(data, cluster == subgroup): object &amp;#39;cluster_selection&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sub_groups_kmeans &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map2&lt;span class="p"&gt;(&lt;/span&gt;sub_groups&lt;span class="p"&gt;,&lt;/span&gt; sub_k&lt;span class="p"&gt;,&lt;/span&gt; run_kmeans_subgroup&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map2(sub_groups, sub_k, run_kmeans_subgroup, nstart): object &amp;#39;sub_groups&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sub_cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; avg_z&lt;span class="p"&gt;,&lt;/span&gt; sub_groups_kmeans&lt;span class="p"&gt;,&lt;/span&gt; k_means_obj&lt;span class="p"&gt;,&lt;/span&gt; cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in cbind(cv_ihs_z, cluster = k_means_obj$cluster): object &amp;#39;cv_ihs_z&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cluster_z_diff &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;),&lt;/span&gt; 
+sub_groups_kmeans &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map2&lt;span class="p"&gt;(&lt;/span&gt;sub_groups&lt;span class="p"&gt;,&lt;/span&gt; sub_k&lt;span class="p"&gt;,&lt;/span&gt; run_kmeans_subgroup&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt;
+sub_cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; avg_z&lt;span class="p"&gt;,&lt;/span&gt; sub_groups_kmeans&lt;span class="p"&gt;,&lt;/span&gt; k_means_obj&lt;span class="p"&gt;,&lt;/span&gt; cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt;
+cluster_z_diff &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;),&lt;/span&gt; 
                       &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; cluster_difference&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;x&lt;span class="p"&gt;]],&lt;/span&gt; cluster_zscores&lt;span class="p"&gt;[&lt;/span&gt;x&lt;span class="p"&gt;,]))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map(1:length(sub_cluster_zscores), function(x) cluster_difference(sub_cluster_zscores[[x]], : object &amp;#39;sub_cluster_zscores&amp;#39; not found
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2303,7 +2398,72 @@ purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in nrow(cluster_zscores): object &amp;#39;cluster_zscores&amp;#39; not found
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals&amp;quot; &amp;quot;On a Budget&amp;quot;                     
+## [3] &amp;quot;Prosperous Professionals&amp;quot;         &amp;quot;Well Established&amp;quot;                
+## [5] &amp;quot;Vulnerable Communities&amp;quot;           &amp;quot;Vulnerable Pensioners&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals&amp;quot; &amp;quot;On a Budget&amp;quot;                     
+## [3] &amp;quot;Prosperous Professionals&amp;quot;         &amp;quot;Well Established&amp;quot;                
+## [5] &amp;quot;Vulnerable Communities&amp;quot;           &amp;quot;Vulnerable Pensioners&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-17-1.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals&amp;quot; &amp;quot;On a Budget&amp;quot;                     
+## [3] &amp;quot;Prosperous Professionals&amp;quot;         &amp;quot;Well Established&amp;quot;                
+## [5] &amp;quot;Vulnerable Communities&amp;quot;           &amp;quot;Vulnerable Pensioners&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals&amp;quot; &amp;quot;On a Budget&amp;quot;                     
+## [3] &amp;quot;Prosperous Professionals&amp;quot;         &amp;quot;Well Established&amp;quot;                
+## [5] &amp;quot;Vulnerable Communities&amp;quot;           &amp;quot;Vulnerable Pensioners&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals&amp;quot; &amp;quot;On a Budget&amp;quot;                     
+## [3] &amp;quot;Prosperous Professionals&amp;quot;         &amp;quot;Well Established&amp;quot;                
+## [5] &amp;quot;Vulnerable Communities&amp;quot;           &amp;quot;Vulnerable Pensioners&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals&amp;quot; &amp;quot;On a Budget&amp;quot;                     
+## [3] &amp;quot;Prosperous Professionals&amp;quot;         &amp;quot;Well Established&amp;quot;                
+## [5] &amp;quot;Vulnerable Communities&amp;quot;           &amp;quot;Vulnerable Pensioners&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-17-2.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [[1]]
+## [[1]]$xpd
+## [1] TRUE
+## 
+## 
+## [[2]]
+## [[2]]$xpd
+## [1] TRUE
+## 
+## 
+## [[3]]
+## [[3]]$xpd
+## [1] TRUE
+## 
+## 
+## [[4]]
+## [[4]]$xpd
+## [1] TRUE
+## 
+## 
+## [[5]]
+## [[5]]$xpd
+## [1] TRUE
+## 
+## 
+## [[6]]
+## [[6]]$xpd
+## [1] TRUE
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2317,7 +2477,325 @@ purrr&lt;span class="o"&gt;::&lt;/span&gt;pmap&lt;span class="p"&gt;(&lt;/span&g
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in is.data.frame(.l): object &amp;#39;sub_cluster_zscores&amp;#39; not found
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals - Sub-group 1&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-1.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals - Sub-group 2&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-2.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals - Sub-group 3&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-3.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals - Sub-group 4&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-4.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 1&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-5.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 2&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-6.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 3&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-7.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 4&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-8.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 5&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-9.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 1&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-10.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 2&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-11.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 3&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-12.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 4&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-13.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 5&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-14.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Sub-group 1&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-15.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Sub-group 2&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-16.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Sub-group 3&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-17.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Sub-group 4&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-18.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 1&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-19.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 2&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-20.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 3&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-21.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 4&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-22.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 5&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-23.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 6&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-24.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 7&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-25.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 8&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-26.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 1&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-27.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 2&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-28.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 3&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-29.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 4&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-30.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 5&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-31.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [[1]]
+## [[1]][[1]]
+## [[1]][[1]]$xpd
+## [1] TRUE
+## 
+## 
+## [[1]][[2]]
+## [[1]][[2]]$xpd
+## [1] TRUE
+## 
+## 
+## [[1]][[3]]
+## [[1]][[3]]$xpd
+## [1] TRUE
+## 
+## 
+## [[1]][[4]]
+## [[1]][[4]]$xpd
+## [1] TRUE
+## 
+## 
+## 
+## [[2]]
+## [[2]][[1]]
+## [[2]][[1]]$xpd
+## [1] TRUE
+## 
+## 
+## [[2]][[2]]
+## [[2]][[2]]$xpd
+## [1] TRUE
+## 
+## 
+## [[2]][[3]]
+## [[2]][[3]]$xpd
+## [1] TRUE
+## 
+## 
+## [[2]][[4]]
+## [[2]][[4]]$xpd
+## [1] TRUE
+## 
+## 
+## [[2]][[5]]
+## [[2]][[5]]$xpd
+## [1] TRUE
+## 
+## 
+## 
+## [[3]]
+## [[3]][[1]]
+## [[3]][[1]]$xpd
+## [1] TRUE
+## 
+## 
+## [[3]][[2]]
+## [[3]][[2]]$xpd
+## [1] TRUE
+## 
+## 
+## [[3]][[3]]
+## [[3]][[3]]$xpd
+## [1] TRUE
+## 
+## 
+## [[3]][[4]]
+## [[3]][[4]]$xpd
+## [1] TRUE
+## 
+## 
+## [[3]][[5]]
+## [[3]][[5]]$xpd
+## [1] TRUE
+## 
+## 
+## 
+## [[4]]
+## [[4]][[1]]
+## [[4]][[1]]$xpd
+## [1] TRUE
+## 
+## 
+## [[4]][[2]]
+## [[4]][[2]]$xpd
+## [1] TRUE
+## 
+## 
+## [[4]][[3]]
+## [[4]][[3]]$xpd
+## [1] TRUE
+## 
+## 
+## [[4]][[4]]
+## [[4]][[4]]$xpd
+## [1] TRUE
+## 
+## 
+## 
+## [[5]]
+## [[5]][[1]]
+## [[5]][[1]]$xpd
+## [1] TRUE
+## 
+## 
+## [[5]][[2]]
+## [[5]][[2]]$xpd
+## [1] TRUE
+## 
+## 
+## [[5]][[3]]
+## [[5]][[3]]$xpd
+## [1] TRUE
+## 
+## 
+## [[5]][[4]]
+## [[5]][[4]]$xpd
+## [1] TRUE
+## 
+## 
+## [[5]][[5]]
+## [[5]][[5]]$xpd
+## [1] TRUE
+## 
+## 
+## [[5]][[6]]
+## [[5]][[6]]$xpd
+## [1] TRUE
+## 
+## 
+## [[5]][[7]]
+## [[5]][[7]]$xpd
+## [1] TRUE
+## 
+## 
+## [[5]][[8]]
+## [[5]][[8]]$xpd
+## [1] TRUE
+## 
+## 
+## 
+## [[6]]
+## [[6]][[1]]
+## [[6]][[1]]$xpd
+## [1] TRUE
+## 
+## 
+## [[6]][[2]]
+## [[6]][[2]]$xpd
+## [1] TRUE
+## 
+## 
+## [[6]][[3]]
+## [[6]][[3]]$xpd
+## [1] TRUE
+## 
+## 
+## [[6]][[4]]
+## [[6]][[4]]$xpd
+## [1] TRUE
+## 
+## 
+## [[6]][[5]]
+## [[6]][[5]]$xpd
+## [1] TRUE
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2329,7 +2807,64 @@ purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in purrr::map(1:length(sub_cluster_zscores), function(x) radial_plot(sub_cluster_zscores[[x]], : object &amp;#39;sub_cluster_zscores&amp;#39; not found
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals - Subgroups&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-1.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Subgroups&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-2.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Subgroups&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-3.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Subgroups&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-4.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Subgroups&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-5.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Subgroups&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-6.png" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [[1]]
+## [[1]]$xpd
+## [1] TRUE
+## 
+## 
+## [[2]]
+## [[2]]$xpd
+## [1] TRUE
+## 
+## 
+## [[3]]
+## [[3]]$xpd
+## [1] TRUE
+## 
+## 
+## [[4]]
+## [[4]]$xpd
+## [1] TRUE
+## 
+## 
+## [[5]]
+## [[5]]$xpd
+## [1] TRUE
+## 
+## 
+## [[6]]
+## [[6]]$xpd
+## [1] TRUE
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2337,22 +2872,12 @@ purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt
 &lt;p&gt;A heatmap was produced showing the z-scores for each variable in each cluster in a single figure. The dendogram produced with the heatmap by hierarchical clustering of the six clusters grouped "Vulnerable Pensioners" and "Vulnerable Communities" with similarities in education, vehicle ownership, and employment and housing variables. The "Well Established", "Prosperous Professional" and "On a Budget" clusters were also grouped together with similarities in housing, vehicle and living arrangement variables. The "Students and Young Professionals" were not very strongly grouped with any other clusters but closer to "Well Established", "Prosperous Professional" and "On a Budget" clusters than "Vulnerable Pensioners" and "Vulnerable Communities".&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# groups heatmap &lt;/span&gt;
 sub_cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; map2&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;,&lt;/span&gt; cluster_names&lt;span class="p"&gt;,&lt;/span&gt; rename_rows&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in map2(sub_cluster_zscores, cluster_names, rename_rows): object &amp;#39;sub_cluster_zscores&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#pdf(&amp;quot;figures\\group_heatmap.pdf&amp;quot;, width = 250, height=350)&lt;/span&gt;
+&lt;span class="c1"&gt;#pdf(&amp;quot;figures\\group_heatmap.pdf&amp;quot;, width = 250, height=350)&lt;/span&gt;
 create_heatmap&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;16&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in t(mean_cluster_zscores): object &amp;#39;cluster_zscores&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;
-
-
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-20-1.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Sub-group Heatmap&lt;/h3&gt;
 &lt;p&gt;To further explore the character of the clusters, k-means was run on each cluster to produce sub-clusters. The number of sub-clusters chosen for each cluster were 5 sub-clusters for "Prosperous Professionals", 4 for "Well-Established", 4 for "Students ans Young Professionals", 5 for "On a Budget", 8 for "Vulnerable Communities" and 5 for "Vulnerable Pensioners". These sub-clusters were then displayed using a heatmap  complete with dendogram showing the clustering of sub-clusters using hierarchical clustering with Euclidean distance. The hierarchical clustering revealed that many of the sub groups from the same parent group clustered together as in the case of  the "Students and Young Professionals" sub-groups which all clusters together. However some subgroups from different parents groups clustered more closely with each other than with other subgroups from their own parents group. An example of this is "Vulnerable Pensioners: Sub-group 5", "Well Established: Subgroup 3" and "On a Budget: Subgroup 3" which clustered together with similarities in age structure and population employment domains. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# subgroups heatmap&lt;/span&gt;
@@ -2361,5 +2886,4 @@ create_heatmap&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rbind&l
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## Error in rbind(sub_cluster_zscores[[1]], sub_cluster_zscores[[2]], sub_cluster_zscores[[3]], : object &amp;#39;sub_cluster_zscores&amp;#39; not found
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="R"></category><category term="k-means"></category><category term="principal component analysis"></category><category term="PCA"></category><category term="census"></category><category term="consumer vulnerability"></category></entry></feed>
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-21-1.png" /&gt;&lt;/p&gt;</summary><category term="R"></category><category term="k-means"></category><category term="principal component analysis"></category><category term="PCA"></category><category term="census"></category><category term="consumer vulnerability"></category></entry></feed>
