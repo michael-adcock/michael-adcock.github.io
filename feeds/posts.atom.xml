@@ -2254,7 +2254,7 @@ pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-8-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-8-1.png" /&gt;&lt;/p&gt;
 &lt;p&gt;We can also look at the cumulative variation.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Look at cumulative variation&lt;/span&gt;
 &lt;span class="kp"&gt;cumsum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kp"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -2292,7 +2292,7 @@ pca_obj&lt;span class="o"&gt;$&lt;/span&gt;sdev&lt;span class="o"&gt;^&lt;/span&
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-9-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-9-1.png" /&gt;&lt;/p&gt;
 &lt;p&gt;When IHS transformation is used the first 25 priciple explains 81% of variation&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# When IHS transformation is used the first 25 priciple explains 81% of variation&lt;/span&gt;
 num_pc &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;
@@ -2310,7 +2310,7 @@ barplot&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rowSums&lt;/sp
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-11-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-11-1.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;K-means Clustering&lt;/h3&gt;
 &lt;p&gt;K-means is an iterative algorithm which finds clusters in data based on the centroids of clusters. Centroid position is random for initial step and subsequently updated at each iteration based on the previous cluster assignments . The initial cluster centroids are randomly selected and the number of clusters (k) must be chosen by the user. &lt;/p&gt;
 &lt;p&gt;K-means was performed using principal components generated from the PCA step as input. The optimum number of clusters was first determined by running k-means at each value of k from 2 to 25. Scree plots and smallest cluster plots from the results were then created. A scree or elbow plot shows the within cluster sum of squares for each cluster number when running k-means. The aim of such a plot is to show where the elbow is, suggesting an appropriate number of clusters, as there are diminishing returns after this point. A smallest cluster plot shows the size of the smallest cluster size when k-means is run for each number of clusters. This allows us to see at which point we start the get very small clusters, which is undesirable. &lt;/p&gt;
@@ -2321,7 +2321,7 @@ scree&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&g
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-1.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-1.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-2.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Small clusters start after a k of ? and elbow plot shows decreasing WSS at around ?&lt;/span&gt;
 num_clusters &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
 
@@ -2358,7 +2358,7 @@ map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;s
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-1.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-2.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-3.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-4.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-5.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-6.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-7.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-8.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-9.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-10.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-11.png" /&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-12.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-1.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-2.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-3.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-4.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-5.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-6.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-7.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-8.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-9.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-10.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-11.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-15-12.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [[1]]
 ## NULL
 ## 
@@ -2410,7 +2410,7 @@ purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-17-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-17-1.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals&amp;quot; &amp;quot;On a Budget&amp;quot;                     
 ## [3] &amp;quot;Prosperous Professionals&amp;quot;         &amp;quot;Well Established&amp;quot;                
 ## [5] &amp;quot;Vulnerable Communities&amp;quot;           &amp;quot;Vulnerable Pensioners&amp;quot;
@@ -2435,7 +2435,7 @@ purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-17-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-17-2.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [[1]]
 ## [[1]]$xpd
 ## [1] TRUE
@@ -2481,157 +2481,157 @@ purrr&lt;span class="o"&gt;::&lt;/span&gt;pmap&lt;span class="p"&gt;(&lt;/span&g
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-1.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals - Sub-group 2&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-2.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals - Sub-group 3&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-3.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Students and Young Professionals - Sub-group 4&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-4.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-4.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 1&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-5.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-5.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 2&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-6.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-6.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 3&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-7.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-7.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 4&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-8.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-8.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Sub-group 5&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-9.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-9.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 1&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-10.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-10.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 2&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-11.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-11.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 3&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-12.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-12.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 4&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-13.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-13.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Sub-group 5&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-14.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-14.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Sub-group 1&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-15.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-15.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Sub-group 2&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-16.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-16.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Sub-group 3&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-17.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-17.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Sub-group 4&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-18.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-18.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 1&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-19.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-19.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 2&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-20.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-20.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 3&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-21.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-21.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 4&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-22.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-22.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 5&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-23.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-23.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 6&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-24.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-24.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 7&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-25.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-25.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Sub-group 8&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-26.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-26.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 1&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-27.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-27.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 2&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-28.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-28.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 3&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-29.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-29.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 4&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-30.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-30.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Sub-group 5&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-31.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-18-31.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [[1]]
 ## [[1]][[1]]
 ## [[1]][[1]]$xpd
@@ -2811,32 +2811,32 @@ purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-1.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;On a Budget - Subgroups&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-2.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Prosperous Professionals - Subgroups&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-3.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-3.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Well Established - Subgroups&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-4.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-4.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Communities - Subgroups&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-5.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-5.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [1] &amp;quot;Vulnerable Pensioners - Subgroups&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="./figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-6.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="figures/consumer_vulnerability_notebook_final/unnamed-chunk-19-6.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;## [[1]]
 ## [[1]]$xpd
 ## [1] TRUE
@@ -2877,7 +2877,7 @@ create_heatmap&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class=
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="{attach}/figures/consumer_vulnerability_notebook_final/unnamed-chunk-20-1.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="{/figures/consumer_vulnerability_notebook_final/unnamed-chunk-20-1.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Sub-group Heatmap&lt;/h3&gt;
 &lt;p&gt;To further explore the character of the clusters, k-means was run on each cluster to produce sub-clusters. The number of sub-clusters chosen for each cluster were 5 sub-clusters for "Prosperous Professionals", 4 for "Well-Established", 4 for "Students ans Young Professionals", 5 for "On a Budget", 8 for "Vulnerable Communities" and 5 for "Vulnerable Pensioners". These sub-clusters were then displayed using a heatmap  complete with dendogram showing the clustering of sub-clusters using hierarchical clustering with Euclidean distance. The hierarchical clustering revealed that many of the sub groups from the same parent group clustered together as in the case of  the "Students and Young Professionals" sub-groups which all clusters together. However some subgroups from different parents groups clustered more closely with each other than with other subgroups from their own parents group. An example of this is "Vulnerable Pensioners: Sub-group 5", "Well Established: Subgroup 3" and "On a Budget: Subgroup 3" which clustered together with similarities in age structure and population employment domains. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# subgroups heatmap&lt;/span&gt;
@@ -2886,4 +2886,4 @@ create_heatmap&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;rbind&l
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="Pelican" src="{./figures/consumer_vulnerability_notebook_final/unnamed-chunk-21-1.png" /&gt;&lt;/p&gt;</summary><category term="R"></category><category term="k-means"></category><category term="principal component analysis"></category><category term="PCA"></category><category term="census"></category><category term="consumer vulnerability"></category></entry></feed>
+&lt;p&gt;&lt;img alt="fig" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-21-1.png" /&gt;&lt;/p&gt;</summary><category term="R"></category><category term="k-means"></category><category term="principal component analysis"></category><category term="PCA"></category><category term="census"></category><category term="consumer vulnerability"></category></entry></feed>
