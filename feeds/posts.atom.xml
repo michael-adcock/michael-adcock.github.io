@@ -1717,11 +1717,7 @@ h6:hover .anchor-link {
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</summary><category term="pymc"></category><category term="Bayesian"></category><category term="probabilistic programming"></category><category term="agent based modeling"></category><category term="abm"></category></entry><entry><title>An Area Classification of Consumer Vulnerability in the UK</title><link href="https://michael-adcock.github.io/consumer_vulnerability.html" rel="alternate"></link><published>2018-05-26T20:00:00+01:00</published><updated>2018-05-26T20:00:00+01:00</updated><author><name>Michael Adcock</name></author><id>tag:michael-adcock.github.io,2018-05-26:consumer_vulnerability.html</id><summary type="html">&lt;hr /&gt;
-&lt;p&gt;title: "Consumer Vulnerability in the United Kingdom"
-output: html_notebook&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h5&gt;Michael Adcock&lt;/h5&gt;
+</summary><category term="pymc"></category><category term="Bayesian"></category><category term="probabilistic programming"></category><category term="agent based modeling"></category><category term="abm"></category></entry><entry><title>An Area Classification of Consumer Vulnerability in the UK</title><link href="https://michael-adcock.github.io/consumer_vulnerability.html" rel="alternate"></link><published>2018-05-26T20:00:00+01:00</published><updated>2018-05-26T20:00:00+01:00</updated><author><name>Michael Adcock</name></author><id>tag:michael-adcock.github.io,2018-05-26:consumer_vulnerability.html</id><summary type="html">&lt;h5&gt;Michael Adcock&lt;/h5&gt;
 &lt;h3&gt;Abstract&lt;/h3&gt;
 &lt;p&gt;Consumer vulnerability has recently attracted increased media attention
 due to a number of high profle cases. While consumer vulnerability has been
@@ -1755,7 +1751,7 @@ geodemographic classification shows improvement in cluster tightness.&lt;/p&gt;
 &lt;p&gt;These five dimensions can be used to construct a scale of vulnerability (e.g. 1 to 5) as related to the above definition. This scale does not give an absolute measure of vulnerability of the consumer in every interaction but rather the risk that the consumer may be vulnerable in a given interaction.&lt;/p&gt;
 &lt;p&gt;This definition and the five dimensions of vulnerability can be considered from the perspective of different markets (e.g. energy sector, financial sector and the gambling industry) which will change the vulnerability scores of customers in respect to these markets.&lt;/p&gt;
 &lt;h2&gt;Methods&lt;/h2&gt;
-&lt;p&gt;Libraries and functions requied for analysis&lt;/p&gt;
+&lt;p&gt;Libraries required&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;plyr&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;RColorBrewer&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;tidyverse&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1765,44 +1761,6 @@ geodemographic classification shows improvement in cluster tightness.&lt;/p&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;ggplot2&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;reshape2&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sf&lt;span class="p"&gt;)&lt;/span&gt;
-
-
-
-run_kmeans_comp_subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; data&lt;span class="p"&gt;,&lt;/span&gt; num_pc&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  data &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
-    filter&lt;span class="p"&gt;(&lt;/span&gt;cluster&lt;span class="o"&gt;==&lt;/span&gt;subgroup&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
-    select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
-    k_comparison&lt;span class="p"&gt;(&lt;/span&gt;iter&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
-    scree&lt;span class="p"&gt;(&lt;/span&gt;iter&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;subgroup &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; subgroup&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-run_kmeans_subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; k&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; subgroup&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;ncol&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-  k_means&lt;span class="p"&gt;(&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt; subgroup&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-avg_z &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_choice&lt;span class="p"&gt;,&lt;/span&gt; sub_kmeans_obj&lt;span class="p"&gt;,&lt;/span&gt; k_means_obj&lt;span class="p"&gt;,&lt;/span&gt; cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  a &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; as_tibble&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;cbind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cv_ihs_z&lt;span class="p"&gt;,&lt;/span&gt; cluster&lt;span class="o"&gt;=&lt;/span&gt;k_means_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;))&lt;/span&gt;
-  a &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; filter&lt;span class="p"&gt;(&lt;/span&gt;a&lt;span class="p"&gt;,&lt;/span&gt; cluster&lt;span class="o"&gt;==&lt;/span&gt;cluster_choice&lt;span class="p"&gt;)[,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;a&lt;span class="p"&gt;)]&lt;/span&gt;
-  ddply&lt;span class="p"&gt;(&lt;/span&gt;a&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;.&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_kmeans_obj&lt;span class="p"&gt;[[&lt;/span&gt;cluster_choice&lt;span class="p"&gt;]]&lt;/span&gt;&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;),&lt;/span&gt; numcolwise&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;mean&lt;/span&gt;&lt;span class="p"&gt;))[,&lt;/span&gt; &lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-cluster_difference &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;,&lt;/span&gt; cluster_zscores&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;unlist&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class="p"&gt;)&lt;/span&gt;
-  sub_cluster_zscores &lt;span class="o"&gt;-&lt;/span&gt; cluster_zscores&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kp"&gt;col&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;)]&lt;/span&gt; &lt;span class="c1"&gt;# -&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-rename_rows &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;,&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="kp"&gt;row.names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;nrow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;row&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;name&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;: Subgroup &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;row&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; sep&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-
-cluster_tibble &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; kmeans_obj&lt;span class="p"&gt;,&lt;/span&gt; cluster_name&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  tib &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; tibble&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="o"&gt;$&lt;/span&gt;OA&lt;span class="p"&gt;,&lt;/span&gt; kmeans_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;tib&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;OA_SA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; cluster_name&lt;span class="p"&gt;)&lt;/span&gt; 
-  &lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;tib&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2101,19 +2059,35 @@ cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; plyr&lt;span class=
 
 &lt;h3&gt;Sub-clusters&lt;/h3&gt;
 &lt;p&gt;In order to explore the clusters further, k-means clustering was applied to each cluster separately to create sub-clusters. For each cluster dataset the appropriate number for k was determined using the same method as when k-means was used on the whole data. To create the sub-clusters the k-means algorithm was run on each cluster data-set 100 times at the chosen number for k and the solution with the lowest within sum of squares was selected.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;### same steps for Sub groups&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;run_kmeans_comp_subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; data&lt;span class="p"&gt;,&lt;/span&gt; num_pc&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  data &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt;
+    filter&lt;span class="p"&gt;(&lt;/span&gt;cluster&lt;span class="o"&gt;==&lt;/span&gt;subgroup&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
+    select&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
+    k_comparison&lt;span class="p"&gt;(&lt;/span&gt;iter&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;%&lt;/span&gt; 
+    scree&lt;span class="p"&gt;(&lt;/span&gt;iter&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;subgroup &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; subgroup&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+run_kmeans_subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; k&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; subgroup&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;ncol&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="m"&gt;-1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  k_means&lt;span class="p"&gt;(&lt;/span&gt;k&lt;span class="p"&gt;,&lt;/span&gt; subgroup&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+
+
+rename_rows &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;,&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kp"&gt;row.names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;nrow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;row&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;name&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;: Subgroup &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;row&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; sep&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; name&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;df&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+
+cluster_tibble &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; kmeans_obj&lt;span class="p"&gt;,&lt;/span&gt; cluster_name&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  tib &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; tibble&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="o"&gt;$&lt;/span&gt;OA&lt;span class="p"&gt;,&lt;/span&gt; kmeans_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="kp"&gt;names&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;tib&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;OA_SA&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; cluster_name&lt;span class="p"&gt;)&lt;/span&gt; 
+  &lt;span class="kr"&gt;return&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;tib&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
 cluster_selection &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; tibble&lt;span class="o"&gt;::&lt;/span&gt;as_tibble&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;cbind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;pca_obj&lt;span class="o"&gt;$&lt;/span&gt;scores&lt;span class="p"&gt;[,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_pc&lt;span class="p"&gt;],&lt;/span&gt; cluster&lt;span class="o"&gt;=&lt;/span&gt;k_means_obj&lt;span class="o"&gt;$&lt;/span&gt;cluster&lt;span class="p"&gt;,&lt;/span&gt; OA&lt;span class="o"&gt;=&lt;/span&gt;oa_data&lt;span class="o"&gt;$&lt;/span&gt;OA&lt;span class="p"&gt;))&lt;/span&gt;
 map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; run_kmeans_comp_subgroup&lt;span class="p"&gt;,&lt;/span&gt; cluster_selection&lt;span class="p"&gt;,&lt;/span&gt; num_pc&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Again aid interpretation in the sub-clusters we can view how each cluster realtes to each variable . The sub-group z-score are assesed both as is (global mean comparision) and in realtion to their parent group (difference in z-score). &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sub_k &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;c&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-sub_groups &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; data&lt;span class="p"&gt;)&lt;/span&gt; dplyr&lt;span class="o"&gt;::&lt;/span&gt;filter&lt;span class="p"&gt;(&lt;/span&gt;data&lt;span class="p"&gt;,&lt;/span&gt; cluster&lt;span class="o"&gt;==&lt;/span&gt;subgroup&lt;span class="p"&gt;),&lt;/span&gt; cluster_selection&lt;span class="p"&gt;)&lt;/span&gt;
-sub_groups_kmeans &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map2&lt;span class="p"&gt;(&lt;/span&gt;sub_groups&lt;span class="p"&gt;,&lt;/span&gt; sub_k&lt;span class="p"&gt;,&lt;/span&gt; run_kmeans_subgroup&lt;span class="p"&gt;,&lt;/span&gt; nstart&lt;span class="p"&gt;)&lt;/span&gt;
-sub_cluster_zscores &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;num_clusters&lt;span class="p"&gt;,&lt;/span&gt; avg_z&lt;span class="p"&gt;,&lt;/span&gt; sub_groups_kmeans&lt;span class="p"&gt;,&lt;/span&gt; k_means_obj&lt;span class="p"&gt;,&lt;/span&gt; cv_ihs_z&lt;span class="p"&gt;)&lt;/span&gt;
-cluster_z_diff &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="kp"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;),&lt;/span&gt; 
-                      &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x&lt;span class="p"&gt;)&lt;/span&gt; cluster_difference&lt;span class="p"&gt;(&lt;/span&gt;sub_cluster_zscores&lt;span class="p"&gt;[[&lt;/span&gt;x&lt;span class="p"&gt;]],&lt;/span&gt; cluster_zscores&lt;span class="p"&gt;[&lt;/span&gt;x&lt;span class="p"&gt;,]))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
