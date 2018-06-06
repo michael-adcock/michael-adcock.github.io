@@ -1719,6 +1719,7 @@ h6:hover .anchor-link {
 &lt;/script&gt;
 </summary><category term="pymc"></category><category term="Bayesian"></category><category term="probabilistic programming"></category><category term="agent based modeling"></category><category term="abm"></category></entry><entry><title>An Area Classification of Consumer Vulnerability in the UK</title><link href="https://michael-adcock.github.io/consumer_vulnerability.html" rel="alternate"></link><published>2018-05-26T20:00:00+01:00</published><updated>2018-05-26T20:00:00+01:00</updated><author><name>Michael Adcock</name></author><id>tag:michael-adcock.github.io,2018-05-26:consumer_vulnerability.html</id><summary type="html">&lt;p&gt;Geodemograpic classifications are often used for marketing purposes, focusing on who to target with certain products. In this post we will be having a look at a classifcation I have created that takes a different approach and identifies areas where it may be unsuitable to directly target people without considering their wellfare. This classification identifies output areas of high consumer vulnerability in the United Kingdom using a k-means approach coupled with principal compent anlysis. As the focus of this blog is on the application of data science methods, I won't be going too deeply into the background consumer vulnerability in this post or disscussing the results at length. If you are intersted in finding out more there is a publication expected for this work which I will share when it is available.&lt;/p&gt;
 &lt;p&gt;The mapped results for this work are hosted on Consumer Center Research Center Maps here. If you haven't used this map service before then I highly recommend it. There are loads of great clasfificatioin and... to view.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/map_leeds_example.png" /&gt;&lt;/p&gt;
 &lt;h2&gt;A Definition of Consumer Vulnerability&lt;/h2&gt;
 &lt;p&gt;Before we get into looking at the methods I should explain when we really mean by consumer vulnerabily. The formal definition used in this work is:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Consumer vulnerability is the risk that a consumer's mental, physical or financial welfare may be damaged when engaging in a market interaction.&lt;/strong&gt;&lt;/p&gt;
@@ -1972,7 +1973,12 @@ scree&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&g
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-1.png" /&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/Prosperous_Professionals.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/Well_Established.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/Students_and_Young_Professionals.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/On_a_Budget.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/Vulnerable_Communities.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/Vulnerable_Pensioners.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Small clusters start after a k of ? and elbow plot shows decreasing WSS at around ?&lt;/span&gt;
 num_clusters &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
 
@@ -2104,7 +2110,7 @@ create_heatmap&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class=
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/census_groups.pdf" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/heatmap.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Sub-group Heatmap&lt;/h3&gt;
 &lt;p&gt;To further explore the character of the clusters, k-means was run on each cluster to produce sub-clusters. The number of sub-clusters chosen for each cluster were 5 sub-clusters for "Prosperous Professionals", 4 for "Well-Established", 4 for "Students ans Young Professionals", 5 for "On a Budget", 8 for "Vulnerable Communities" and 5 for "Vulnerable Pensioners". These sub-clusters were then displayed using a heatmap  complete with dendogram showing the clustering of sub-clusters using hierarchical clustering with Euclidean distance. The hierarchical clustering revealed that many of the sub groups from the same parent group clustered together as in the case of  the "Students and Young Professionals" sub-groups which all clusters together. However some subgroups from different parents groups clustered more closely with each other than with other subgroups from their own parents group. An example of this is "Vulnerable Pensioners: Sub-group 5", "Well Established: Subgroup 3" and "On a Budget: Subgroup 3" which clustered together with similarities in age structure and population employment domains. &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# subgroups heatmap&lt;/span&gt;
