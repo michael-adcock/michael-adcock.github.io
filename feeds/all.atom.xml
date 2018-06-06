@@ -1969,12 +1969,8 @@ scree&lt;span class="p"&gt;(&lt;/span&gt;k_choice_clust_list&lt;span class="p"&g
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/Prosperous_Professionals.png" /&gt;
-&lt;img alt="center" src="https://michael-adcock.github.io/figures/Well_Established.png" /&gt;
-&lt;img alt="center" src="https://michael-adcock.github.io/figures/Students_and_Young_Professionals.png" /&gt;
-&lt;img alt="center" src="https://michael-adcock.github.io/figures/On_a_Budget.png" /&gt;
-&lt;img alt="center" src="https://michael-adcock.github.io/figures/Vulnerable_Communities.png" /&gt;
-&lt;img alt="center" src="https://michael-adcock.github.io/figures/Vulnerable_Pensioners.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-1.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-12-2.png" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Small clusters start after a k of ? and elbow plot shows decreasing WSS at around ?&lt;/span&gt;
 num_clusters &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt;
 
@@ -2075,8 +2071,12 @@ purrr&lt;span class="o"&gt;::&lt;/span&gt;map&lt;span class="p"&gt;(&lt;/span&gt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-17-1.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/consumer_vulnerability_notebook_final/unnamed-chunk-17-2.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/Prosperous_Professionals.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/Well_Established.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/Students_and_Young_Professionals.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/On_a_Budget.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/Vulnerable_Communities.png" /&gt;
+&lt;img alt="center" src="https://michael-adcock.github.io/figures/Vulnerable_Pensioners.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Group Heatmap&lt;/h3&gt;
 &lt;p&gt;A heatmap was produced showing the z-scores for each variable in each cluster in a single figure. The dendogram produced with the heatmap by hierarchical clustering of the six clusters grouped "Vulnerable Pensioners" and "Vulnerable Communities" with similarities in education, vehicle ownership, and employment and housing variables. The "Well Established", "Prosperous Professional" and "On a Budget" clusters were also grouped together with similarities in housing, vehicle and living arrangement variables. The "Students and Young Professionals" were not very strongly grouped with any other clusters but closer to "Well Established", "Prosperous Professional" and "On a Budget" clusters than "Vulnerable Pensioners" and "Vulnerable Communities".&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;create_heatmap &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;mean_cluster_zscores&lt;span class="p"&gt;,&lt;/span&gt; num_clusters&lt;span class="p"&gt;,&lt;/span&gt; margins&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
