@@ -2067,7 +2067,7 @@ create_heatmap&lt;span class="p"&gt;(&lt;/span&gt;cluster_zscores&lt;span class=
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;![center]https://michael-adcock.github.io/figures/group_heatmap.png)&lt;/p&gt;
+&lt;p&gt;&lt;img alt="center" src="https://michael-adcock.github.io/figures/group_heatmap.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;Sub-clusters&lt;/h3&gt;
 &lt;p&gt;In order to explore the clusters further, k-means clustering was applied to each cluster separately to create sub-clusters. I acheceved this using the methods as previously but by fist subsetting the data for each cluster.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;run_kmeans_comp_subgroup &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kr"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;subgroup&lt;span class="p"&gt;,&lt;/span&gt; data&lt;span class="p"&gt;,&lt;/span&gt; num_pc&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
